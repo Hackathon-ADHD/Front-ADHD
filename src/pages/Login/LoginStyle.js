@@ -81,7 +81,7 @@ export const Logo = styled.div`
 `;
 
 export const SocialLoginButton = styled.button`
-  width: 250px;
+  width: 230px;
   height: 50px;
   margin: 10px 0;
   display: flex;
