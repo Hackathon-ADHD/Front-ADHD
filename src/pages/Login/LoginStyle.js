@@ -5,7 +5,6 @@ export const LoginWrapper = styled.div`
   height: 100vh;
   overflow: hidden;
   display: flex;
-  flex-direction: row;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -28,31 +27,6 @@ export const LoginLeft = styled.div`
   }
 `;
 
-export const LogoWrapper = styled.div`
-  width: 100%;
-  height: 60%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    height: 30%;
-  }
-`;
-
-export const LoginButtonWrapper = styled.div`
-  width: 100%;
-  height: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 768px) {
-    height: 70%;
-  }
-`;
-
 export const LoginRight = styled.div`
   width: 60%;
   height: 100%;
@@ -68,6 +42,18 @@ export const LoginRight = styled.div`
   }
 `;
 
+export const LogoWrapper = styled.div`
+  width: 100%;
+  height: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 30%;
+  }
+`;
+
 export const Logo = styled.div`
   width: 200px;
   height: 50px;
@@ -78,6 +64,19 @@ export const Logo = styled.div`
   margin-bottom: 20px;
   font-size: 18px;
   background-color: lightgray;
+`;
+
+export const LoginButtonWrapper = styled.div`
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 70%;
+  }
 `;
 
 export const SocialLoginButton = styled.button`
