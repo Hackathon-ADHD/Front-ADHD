@@ -26,8 +26,8 @@ const GoogleAuthRedirect = () => {
           const accessToken = response.data.access_token;
           const idToken = response.data.id_token;
 
-          localStorage.setItem("accessToken", accessToken);
-          localStorage.setItem("idToken", idToken);
+          localStorage.setItem("googleAccessToken", accessToken);
+          localStorage.setItem("googleIdToken", idToken);
 
           navigate("/signupnickname");
         })
