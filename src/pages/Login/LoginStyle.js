@@ -33,6 +33,9 @@ export const LoginRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  border-radius: 10px;
+
   background-color: #d8ebf2;
 
   @media (max-width: 768px) {
@@ -81,7 +84,7 @@ export const LoginButtonWrapper = styled.div`
 
 export const SocialLoginButton = styled.button`
   width: 230px;
-  height: 50px;
+  height: 60px;
   margin: 10px 0;
   display: flex;
   align-items: center;
@@ -99,7 +102,7 @@ export const SocialLoginButton = styled.button`
 
   @media (max-width: 768px) {
     width: 200px;
-    height: 40px;
+    height: 50px;
   }
 `;
 
