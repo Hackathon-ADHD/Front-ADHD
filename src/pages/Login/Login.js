@@ -5,15 +5,16 @@ import {
   LoginWrapper,
   LoginLeft,
   LoginRight,
-  LogoWrapper,
-  Logo,
+  LoginTextWrapper,
+  LoginLogoWrapper,
   LoginButtonWrapper,
   SocialLoginButton,
-  AnimationWrapper,
+  LoginText,
 } from "./LoginStyle";
 import googleSigninButton from "../../assets/images/google_signin_button.png";
 import kakaoSigninButton from "../../assets/images/kakao_signin_button.png";
 import naverSigninButton from "../../assets/images/naver_signin_button.png";
+import loginLogo from "../../assets/images/LoginLogoImage.png";
 const SCOPE =
   "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
 const STATE = "test";
@@ -50,9 +51,13 @@ const Login = () => {
   return (
     <LoginWrapper>
       <LoginLeft>
-        <LogoWrapper>
-          <Logo>로고 설정 후 삽입 예정</Logo>
-        </LogoWrapper>
+        <LoginTextWrapper>
+          <LoginText>
+            <p>오늘 하루도</p>
+            <p>수고했을 당신에게</p>
+            <p>전하는 마음</p>
+          </LoginText>
+        </LoginTextWrapper>
         <LoginButtonWrapper>
           <SocialLoginButton
             className="google_login_button"
@@ -75,9 +80,9 @@ const Login = () => {
         </LoginButtonWrapper>
       </LoginLeft>
       <LoginRight>
-        <AnimationWrapper>
-          여기 애들이 병 속에 들어있는 애니메이션 넣을 예정
-        </AnimationWrapper>
+        <LoginLogoWrapper>
+          <img src={loginLogo} alt="login-logo" />
+        </LoginLogoWrapper>
       </LoginRight>
     </LoginWrapper>
   );

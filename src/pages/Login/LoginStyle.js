@@ -1,5 +1,11 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
+const robotoSlabFont = css`
+  @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
+
+  font-family: "Roboto slab", cursive;
+  font-size: 25px;
+`;
 export const LoginWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -45,7 +51,7 @@ export const LoginRight = styled.div`
   }
 `;
 
-export const LogoWrapper = styled.div`
+export const LoginTextWrapper = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
@@ -57,16 +63,16 @@ export const LogoWrapper = styled.div`
   }
 `;
 
-export const Logo = styled.div`
-  width: 200px;
-  height: 50px;
+export const LoginText = styled.div`
+  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  margin-bottom: 20px;
-  font-size: 18px;
-  background-color: lightgray;
+  ${robotoSlabFont}
+  @media(max-width:768px) {
+    font-size: 15px;
+  }
 `;
 
 export const LoginButtonWrapper = styled.div`
@@ -106,12 +112,21 @@ export const SocialLoginButton = styled.button`
   }
 `;
 
-export const AnimationWrapper = styled.div`
-  text-align: center;
-  font-size: 24px;
-  color: #333;
+export const LoginLogoWrapper = styled.div`
+  width: 100%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+  }
 
   @media (max-width: 768px) {
-    font-size: 20px;
+    height: 50%;
   }
 `;
