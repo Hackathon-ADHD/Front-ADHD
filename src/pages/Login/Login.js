@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import {
   LoginWrapper,
   LoginLeft,
@@ -15,9 +14,13 @@ import googleSigninButton from "../../assets/images/google_signin_button.png";
 import kakaoSigninButton from "../../assets/images/kakao_signin_button.png";
 import naverSigninButton from "../../assets/images/naver_signin_button.png";
 import loginLogo from "../../assets/images/LoginLogoImage.png";
+import { useTypingAnime } from "../../components/TypingTextAnimation";
+import { GlobalStyle } from "../../assets/styles/globalStyle";
+
 const SCOPE =
   "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
 const STATE = "test";
+
 const Login = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
@@ -48,43 +51,56 @@ const Login = () => {
     }
   }, [location.search, navigate]);
 
+  const { animeFinishFlag: firstFlag, TypingTextDiv: FirstText } =
+    useTypingAnime("오늘 하루도", 100);
+  const { animeFinishFlag: secondFlag, TypingTextDiv: SecondText } =
+    useTypingAnime("수고했을 당신에게", 100, firstFlag);
+  const { TypingTextDiv: ThirdText } = useTypingAnime(
+    "전하는 마음",
+    100,
+    secondFlag
+  );
+
   return (
-    <LoginWrapper>
-      <LoginLeft>
-        <LoginTextWrapper>
-          <LoginText>
-            <p>오늘 하루도</p>
-            <p>수고했을 당신에게</p>
-            <p>전하는 마음</p>
-          </LoginText>
-        </LoginTextWrapper>
-        <LoginButtonWrapper>
-          <SocialLoginButton
-            className="google_login_button"
-            onClick={handleGoogleLogin}
-          >
-            <img src={googleSigninButton} alt="google-login" />
-          </SocialLoginButton>
-          <SocialLoginButton
-            className="kakao_login_button"
-            onClick={handleKakaoLogin}
-          >
-            <img src={kakaoSigninButton} alt="kakao-login" />
-          </SocialLoginButton>
-          <SocialLoginButton
-            className="naver_login_button"
-            onClick={handleNaverLogin}
-          >
-            <img src={naverSigninButton} alt="naver-login" />
-          </SocialLoginButton>
-        </LoginButtonWrapper>
-      </LoginLeft>
-      <LoginRight>
-        <LoginLogoWrapper>
-          <img src={loginLogo} alt="login-logo" />
-        </LoginLogoWrapper>
-      </LoginRight>
-    </LoginWrapper>
+    <>
+      <GlobalStyle />
+      <LoginWrapper>
+        <LoginLeft>
+          <LoginTextWrapper>
+            <LoginText>
+              <FirstText />
+              <SecondText />
+              <ThirdText />
+            </LoginText>
+          </LoginTextWrapper>
+          <LoginButtonWrapper>
+            <SocialLoginButton
+              className="google_login_button"
+              onClick={handleGoogleLogin}
+            >
+              <img src={googleSigninButton} alt="google-login" />
+            </SocialLoginButton>
+            <SocialLoginButton
+              className="kakao_login_button"
+              onClick={handleKakaoLogin}
+            >
+              <img src={kakaoSigninButton} alt="kakao-login" />
+            </SocialLoginButton>
+            <SocialLoginButton
+              className="naver_login_button"
+              onClick={handleNaverLogin}
+            >
+              <img src={naverSigninButton} alt="naver-login" />
+            </SocialLoginButton>
+          </LoginButtonWrapper>
+        </LoginLeft>
+        <LoginRight>
+          <LoginLogoWrapper>
+            <img src={loginLogo} alt="login-logo" />
+          </LoginLogoWrapper>
+        </LoginRight>
+      </LoginWrapper>
+    </>
   );
 };
 
