@@ -1,11 +1,5 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const robotoSlabFont = css`
-  @import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap");
-
-  font-family: "Roboto slab", cursive;
-  font-size: 25px;
-`;
 export const LoginWrapper = styled.div`
   width: 100vw;
   height: 100vh;
@@ -69,8 +63,10 @@ export const LoginText = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${robotoSlabFont}
-  @media(max-width:768px) {
+  /* font-family: "LoginTextFont", sans-serif; */
+  font-weight: 700;
+
+  @media (max-width: 768px) {
     font-size: 15px;
   }
 `;
