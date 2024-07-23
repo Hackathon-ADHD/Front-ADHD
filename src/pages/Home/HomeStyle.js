@@ -18,7 +18,7 @@ export const SideBarWrapper = styled.div`
   padding-top: 20px;
 
   @media (max-width: 768px) {
-    width: 25%; /* 화면이 줄어도 사이드 바의 너비가 유지되도록 설정 */
+    width: 25%;
   }
 `;
 
@@ -32,7 +32,7 @@ export const MainWrapper = styled.div`
   padding: 20px;
 `;
 
-export const SideBarNickname = styled.div`
+export const SideBarLogoNicknameWrapper = styled.div`
   width: 100%;
   height: 30%;
   padding: 20px;
@@ -42,6 +42,29 @@ export const SideBarNickname = styled.div`
   justify-content: flex-end;
   color: black;
   border-bottom: 1px solid #ccc;
+`;
+
+export const LogoWrapper = styled.div`
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    cursor: pointer;
+  }
+`;
+
+export const NicknameWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
 export const NicknameText = styled.div`
@@ -74,7 +97,7 @@ export const ButtonWrapper = styled.div`
 `;
 
 export const SideBarButton = styled.div`
-  width: 80%; /* Adjust the width to center within the ButtonWrapper */
+  width: 80%;
   padding: 15px 20px;
   display: flex;
   align-items: center;

@@ -30,7 +30,7 @@ const KakaoAuthRedirect = () => {
 
           localStorage.setItem("kakaoAccessToken", accessToken);
 
-          navigate("/signupnickname");
+          navigate("/signup");
         })
         .catch((error) => {
           console.error(

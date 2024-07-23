@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   LoginWrapper,
@@ -22,7 +22,6 @@ const SCOPE =
 const STATE = "test";
 
 const Login = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -40,14 +39,13 @@ const Login = () => {
     const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
     window.location.href = naverAuthUrl;
   };
-
+  //실패 시 404페이지?
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const authorizationCode = params.get("code");
 
     if (authorizationCode) {
-      setLoggedIn(true);
-      navigate("/signupnickname");
+      navigate("/signup");
     }
   }, [location.search, navigate]);
 

@@ -29,7 +29,7 @@ const GoogleAuthRedirect = () => {
           localStorage.setItem("googleAccessToken", accessToken);
           localStorage.setItem("googleIdToken", idToken);
 
-          navigate("/signupnickname");
+          navigate("/signup");
         })
         .catch((error) => {
           console.log(error);
