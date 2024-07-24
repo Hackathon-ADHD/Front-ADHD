@@ -1,3 +1,4 @@
+// HomeStyle.js
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
@@ -35,7 +36,7 @@ export const MainWrapper = styled.div`
 export const SideBarLogoNicknameWrapper = styled.div`
   width: 100%;
   height: 30%;
-  padding: 20px;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,26 +46,27 @@ export const SideBarLogoNicknameWrapper = styled.div`
 `;
 
 export const LogoWrapper = styled.div`
-  width: 90%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  height: 70%;
 
   & img {
-    width: 100%;
+    width: 50%;
     height: auto;
     max-height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     cursor: pointer;
   }
 `;
 
 export const NicknameWrapper = styled.div`
+  width: 100%;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+
+  padding: 20px;
 `;
 
 export const NicknameText = styled.div`
@@ -152,4 +154,21 @@ export const SignupButton = styled.button`
   &:hover {
     background-color: #333;
   }
+`;
+
+export const CalendarHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+  font-weight: bold;
+`;
+
+export const MonthNavigationButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin-left: 10px;
 `;

@@ -1,3 +1,4 @@
+// Home.js
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FaRegFileAlt, FaRegUser } from "react-icons/fa";
@@ -18,6 +19,8 @@ import {
   ButtonWrapper,
   LogoWrapper,
   NicknameWrapper,
+  CalendarHeader,
+  MonthNavigationButton,
 } from "./HomeStyle";
 import LogoImage from "../../assets/images/LogoImage.png";
 import { useRecoilValue } from "recoil";
@@ -25,11 +28,15 @@ import {
   isLoggedInState,
   profileNameState,
 } from "../../recoils/atoms/loginState";
+import useCalendar from "../../hooks/useCalendar";
+import { format, isSameMonth, isSameDay, isAfter, endOfDay } from "date-fns";
 
 const Home = () => {
   const navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInState);
   const profileName = useRecoilValue(profileNameState);
+  const { weekCalendarList, currentDate, goToPreviousMonth, goToNextMonth } =
+    useCalendar();
 
   const handleClickSignup = () => {
     navigate("login");
@@ -41,6 +48,11 @@ const Home = () => {
 
   const handleClickHome = () => {
     navigate("/");
+  };
+
+  const handleDateClick = (date) => {
+    console.log("Clicked date:", date);
+    // 이곳에 필요한 클릭 이벤트 동작 추가
   };
 
   return (
@@ -81,7 +93,49 @@ const Home = () => {
       </SideBarWrapper>
       <MainWrapper>
         <CalendarContainer>
-          <p>달력</p>
+          <CalendarHeader>
+            <span>{format(currentDate, "MMMM yyyy")}</span>
+            <div style={{ display: "flex" }}>
+              <MonthNavigationButton onClick={goToPreviousMonth}>
+                {"<"}
+              </MonthNavigationButton>
+              <MonthNavigationButton onClick={goToNextMonth}>
+                {">"}
+              </MonthNavigationButton>
+            </div>
+          </CalendarHeader>
+
+          {weekCalendarList.map((week, weekIndex) => (
+            <div key={weekIndex} style={{ display: "flex" }}>
+              {week.map((day, dayIndex) => {
+                const isCurrentMonth = isSameMonth(day, currentDate);
+                const isPastDate = isAfter(endOfDay(new Date()), day);
+                const handleClick = isPastDate
+                  ? () => handleDateClick(day)
+                  : undefined;
+                return (
+                  <div
+                    key={dayIndex}
+                    onClick={handleClick}
+                    style={{
+                      width: "14.28%",
+                      padding: "10px",
+                      boxSizing: "border-box",
+                      textAlign: "center",
+                      color: isCurrentMonth ? "#000" : "#ccc",
+                      backgroundColor:
+                        isCurrentMonth && isSameDay(day, new Date())
+                          ? "#ADD8E6"
+                          : "transparent",
+                      cursor: isPastDate ? "pointer" : "default",
+                    }}
+                  >
+                    {day.getDate()}
+                  </div>
+                );
+              })}
+            </div>
+          ))}
         </CalendarContainer>
         <DiaryContainer>
           <p>일기</p>
