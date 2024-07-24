@@ -63,8 +63,9 @@ export const LoginText = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* font-family: "LoginTextFont", sans-serif; */
+  font-family: "Gowun Dodum", sans-serif;
   font-weight: 700;
+  font-size: 25px;
 
   @media (max-width: 768px) {
     font-size: 15px;
@@ -92,13 +93,15 @@ export const SocialLoginButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
+  border-radius: 10px;
   cursor: pointer;
-  background-color: transparent;
+  background-color: red;
   padding: 0;
 
   & img {
     width: 100%;
-    height: auto;
+    height: 60px;
+
     pointer-events: none;
   }
 
