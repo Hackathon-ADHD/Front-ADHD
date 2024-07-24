@@ -28,7 +28,7 @@ const KakaoAuthRedirect = () => {
         .then((response) => {
           const accessToken = response.data.access_token;
 
-          localStorage.setItem("kakaoAccessToken", accessToken);
+          localStorage.setItem("kakaoAccessToken", accessToken);//
 
           navigate("/signup");
         })
