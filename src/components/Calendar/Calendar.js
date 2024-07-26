@@ -10,19 +10,20 @@ const Calendar = ({ handleDateClick }) => {
   return (
     <S.CalendarContainer>
       <S.CalendarHeader>
-        {format(currentDate, "yyyy")} {format(currentDate, "M월")}
-        <div style={{ display: "flex" }}>
+        <S.YearText>{format(currentDate, "yyyy")}</S.YearText>
+        <S.MonthText>{format(currentDate, "M월")}</S.MonthText>
+        <S.NavigationContainer>
           <S.MonthNavigationButton onClick={goToPreviousMonth}>
             {"<"}
           </S.MonthNavigationButton>
           <S.MonthNavigationButton onClick={goToNextMonth}>
             {">"}
           </S.MonthNavigationButton>
-        </div>
+        </S.NavigationContainer>
       </S.CalendarHeader>
 
       {weekCalendarList.map((week, weekIndex) => (
-        <div key={weekIndex} style={{ display: "flex" }}>
+        <S.WeekRow key={weekIndex}>
           {week.map((day, dayIndex) => {
             const isCurrentMonth = isSameMonth(day, currentDate);
             const isPastDate = isAfter(endOfDay(new Date()), day);
@@ -30,27 +31,18 @@ const Calendar = ({ handleDateClick }) => {
               ? () => handleDateClick(day)
               : undefined;
             return (
-              <div
+              <S.DayCell
                 key={dayIndex}
                 onClick={handleClick}
-                style={{
-                  width: "14.28%",
-                  padding: "10px",
-                  boxSizing: "border-box",
-                  textAlign: "center",
-                  color: isCurrentMonth ? "#000" : "#ccc",
-                  backgroundColor:
-                    isCurrentMonth && isSameDay(day, new Date())
-                      ? "#ADD8E6"
-                      : "transparent",
-                  cursor: isPastDate ? "pointer" : "default",
-                }}
+                isCurrentMonth={isCurrentMonth}
+                isToday={isCurrentMonth && isSameDay(day, new Date())}
+                isPastDate={isPastDate}
               >
                 {day.getDate()}
-              </div>
+              </S.DayCell>
             );
           })}
-        </div>
+        </S.WeekRow>
       ))}
     </S.CalendarContainer>
   );
