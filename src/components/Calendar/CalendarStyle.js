@@ -49,8 +49,8 @@ export const DayCell = styled.div`
   box-sizing: border-box;
   text-align: center;
   position: relative;
-  ${({ isCurrentMonth }) => css`
-    color: ${isCurrentMonth ? "#000" : "#ccc"};
+  ${({ iscurrentmonth }) => css`
+    color: ${iscurrentmonth ? "#000" : "#ccc"};
   `}
   ${({ isSelected }) =>
     isSelected &&
@@ -68,8 +68,8 @@ export const DayCell = styled.div`
         z-index: 1;
       }
     `}
-  ${({ isPastDate }) =>
-    isPastDate &&
+  ${({ ispastdate }) =>
+    ispastdate &&
     css`
       cursor: pointer;
     `}
