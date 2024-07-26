@@ -20,7 +20,10 @@ const ProfileHeader = () => {
       </S.LogoWrapper>
       <S.NicknameWrapper>
         <S.NicknameText>{profileName} 님</S.NicknameText>
-        <S.QuestionText>오늘 하루는 어떠셨나요?</S.QuestionText>
+        <S.QuestionText>
+          오늘 하루는 어떠셨나요?
+          <span>PLUS+ 구독</span>
+        </S.QuestionText>
       </S.NicknameWrapper>
     </S.SideBarLogoNicknameWrapper>
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { format, isSameMonth, isSameDay, isAfter, endOfDay } from "date-fns";
 import * as S from "./CalendarStyle";
 import useCalendar from "../../hooks/useCalendar";
@@ -6,51 +6,52 @@ import useCalendar from "../../hooks/useCalendar";
 const Calendar = ({ handleDateClick }) => {
   const { weekCalendarList, currentDate, goToPreviousMonth, goToNextMonth } =
     useCalendar();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
+
+  const onDateClick = (day) => {
+    setSelectedDate(day);
+    handleDateClick(day);
+  };
 
   return (
     <S.CalendarContainer>
       <S.CalendarHeader>
-        {format(currentDate, "yyyy")} {format(currentDate, "M월")}
-        <div style={{ display: "flex" }}>
+        <S.YearText>{format(currentDate, "yyyy")}</S.YearText>
+        <S.MonthText>{format(currentDate, "M월")}</S.MonthText>
+        <S.NavigationContainer>
           <S.MonthNavigationButton onClick={goToPreviousMonth}>
             {"<"}
           </S.MonthNavigationButton>
           <S.MonthNavigationButton onClick={goToNextMonth}>
             {">"}
           </S.MonthNavigationButton>
-        </div>
+        </S.NavigationContainer>
       </S.CalendarHeader>
 
       {weekCalendarList.map((week, weekIndex) => (
-        <div key={weekIndex} style={{ display: "flex" }}>
+        <S.WeekRow key={weekIndex}>
           {week.map((day, dayIndex) => {
             const isCurrentMonth = isSameMonth(day, currentDate);
             const isPastDate = isAfter(endOfDay(new Date()), day);
-            const handleClick = isPastDate
-              ? () => handleDateClick(day)
-              : undefined;
+            const handleClick = isPastDate ? () => onDateClick(day) : undefined;
+            const isSelected = isSameDay(day, selectedDate);
             return (
-              <div
+              <S.DayCell
                 key={dayIndex}
                 onClick={handleClick}
-                style={{
-                  width: "14.28%",
-                  padding: "10px",
-                  boxSizing: "border-box",
-                  textAlign: "center",
-                  color: isCurrentMonth ? "#000" : "#ccc",
-                  backgroundColor:
-                    isCurrentMonth && isSameDay(day, new Date())
-                      ? "#ADD8E6"
-                      : "transparent",
-                  cursor: isPastDate ? "pointer" : "default",
-                }}
+                isCurrentMonth={isCurrentMonth}
+                isSelected={isSelected}
+                isPastDate={isPastDate}
               >
-                {day.getDate()}
-              </div>
+                <S.DayText>{day.getDate()}</S.DayText>
+              </S.DayCell>
             );
           })}
-        </div>
+        </S.WeekRow>
       ))}
     </S.CalendarContainer>
   );

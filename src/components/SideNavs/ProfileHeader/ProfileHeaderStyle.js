@@ -43,4 +43,13 @@ export const QuestionText = styled.div`
   font-size: 0.9rem;
   color: #666;
   margin-top: 5px;
+  span {
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: black;
+
+    margin-left: 10px;
+
+    cursor: pointer;
+  }
 `;
