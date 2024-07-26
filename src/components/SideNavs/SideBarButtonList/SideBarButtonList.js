@@ -5,7 +5,7 @@ import { FiHome } from "react-icons/fi";
 import { RiNotification2Line, RiNotification2Fill } from "react-icons/ri";
 import { PiChatsTeardrop, PiChatsTeardropFill } from "react-icons/pi";
 import { GoHomeFill } from "react-icons/go";
-import SideBarButton from "../SideBarButton";
+import SideBarButton from "../SideBarButton/SideBarButton";
 import * as S from "./SideBarButtonListStyle";
 
 const SideBarButtonList = () => {
@@ -13,6 +13,9 @@ const SideBarButtonList = () => {
 
   const handleClickHome = () => {
     navigate("/");
+  };
+  const handleClickDiary = () => {
+    navigate("diary");
   };
 
   return (
@@ -25,7 +28,11 @@ const SideBarButtonList = () => {
         Home
       </SideBarButton>
 
-      <SideBarButton defaultIcon={<FaRegFileAlt />} hoveredIcon={<FaFileAlt />}>
+      <SideBarButton
+        defaultIcon={<FaRegFileAlt />}
+        hoveredIcon={<FaFileAlt />}
+        onClick={handleClickDiary}
+      >
         일기 작성하기
       </SideBarButton>
 

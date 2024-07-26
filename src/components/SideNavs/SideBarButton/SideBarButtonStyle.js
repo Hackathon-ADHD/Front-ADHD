@@ -1,0 +1,26 @@
+import styled from "styled-components";
+
+export const SideBarButtonStyle = styled.div`
+  width: 80%;
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background-color 0.3s, border 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: #e9ecef;
+    border-radius: 30px;
+    font-weight: 700;
+    color: black;
+  }
+
+  svg {
+    margin-right: 20px;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+`;

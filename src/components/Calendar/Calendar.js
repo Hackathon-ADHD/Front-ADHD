@@ -10,8 +10,7 @@ const Calendar = ({ handleDateClick }) => {
   return (
     <S.CalendarContainer>
       <S.CalendarHeader>
-        <span>{format(currentDate, "yyyy")}</span>
-        <span>{format(currentDate, "M월")}</span>
+        {format(currentDate, "yyyy")} {format(currentDate, "M월")}
         <div style={{ display: "flex" }}>
           <S.MonthNavigationButton onClick={goToPreviousMonth}>
             {"<"}
