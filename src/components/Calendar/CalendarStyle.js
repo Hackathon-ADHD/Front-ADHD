@@ -19,11 +19,11 @@ export const CalendarHeader = styled.div`
 `;
 
 export const YearText = styled.span`
-  font-size: 13px;
+  font-size: 16px;
 `;
 
 export const MonthText = styled.span`
-  margin-left: 30px;
+  margin-left: 10px;
 `;
 
 export const NavigationContainer = styled.div`
@@ -48,17 +48,34 @@ export const DayCell = styled.div`
   padding: 10px;
   box-sizing: border-box;
   text-align: center;
+  position: relative;
   ${({ isCurrentMonth }) => css`
     color: ${isCurrentMonth ? "#000" : "#ccc"};
   `}
-  ${({ isToday }) =>
-    isToday &&
+  ${({ isSelected }) =>
+    isSelected &&
     css`
-      background-color: #add8e6;
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 50px;
+        height: 50px;
+        background-color: #add8e6;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+      }
     `}
   ${({ isPastDate }) =>
     isPastDate &&
     css`
       cursor: pointer;
     `}
+`;
+
+export const DayText = styled.div`
+  position: relative;
+  z-index: 2;
 `;

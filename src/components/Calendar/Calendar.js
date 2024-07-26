@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { format, isSameMonth, isSameDay, isAfter, endOfDay } from "date-fns";
 import * as S from "./CalendarStyle";
 import useCalendar from "../../hooks/useCalendar";
@@ -6,6 +6,16 @@ import useCalendar from "../../hooks/useCalendar";
 const Calendar = ({ handleDateClick }) => {
   const { weekCalendarList, currentDate, goToPreviousMonth, goToNextMonth } =
     useCalendar();
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
+  useEffect(() => {
+    setSelectedDate(new Date());
+  }, []);
+
+  const onDateClick = (day) => {
+    setSelectedDate(day);
+    handleDateClick(day);
+  };
 
   return (
     <S.CalendarContainer>
@@ -27,18 +37,17 @@ const Calendar = ({ handleDateClick }) => {
           {week.map((day, dayIndex) => {
             const isCurrentMonth = isSameMonth(day, currentDate);
             const isPastDate = isAfter(endOfDay(new Date()), day);
-            const handleClick = isPastDate
-              ? () => handleDateClick(day)
-              : undefined;
+            const handleClick = isPastDate ? () => onDateClick(day) : undefined;
+            const isSelected = isSameDay(day, selectedDate);
             return (
               <S.DayCell
                 key={dayIndex}
                 onClick={handleClick}
                 isCurrentMonth={isCurrentMonth}
-                isToday={isCurrentMonth && isSameDay(day, new Date())}
+                isSelected={isSelected}
                 isPastDate={isPastDate}
               >
-                {day.getDate()}
+                <S.DayText>{day.getDate()}</S.DayText>
               </S.DayCell>
             );
           })}

@@ -32,7 +32,7 @@ const Home = () => {
         )}
       </S.SideBarWrapper>
       <S.MainWrapper>
-        <Calendar handleDateClick={handleDateClick} />{" "}
+        <Calendar handleDateClick={handleDateClick} />
         <S.DiaryContainer>
           <p>일기</p>
         </S.DiaryContainer>
