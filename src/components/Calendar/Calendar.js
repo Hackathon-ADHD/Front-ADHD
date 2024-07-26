@@ -43,9 +43,9 @@ const Calendar = ({ handleDateClick }) => {
               <S.DayCell
                 key={dayIndex}
                 onClick={handleClick}
-                isCurrentMonth={isCurrentMonth}
-                isSelected={isSelected}
-                isPastDate={isPastDate}
+                iscurrentmonth={isCurrentMonth ? "true" : undefined}
+                isselected={isSelected ? "true" : undefined}
+                ispastdate={isPastDate ? "true" : undefined}
               >
                 <S.DayText>{day.getDate()}</S.DayText>
               </S.DayCell>
