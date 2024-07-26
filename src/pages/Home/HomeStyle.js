@@ -1,4 +1,3 @@
-// HomeStyle.js
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
@@ -33,54 +32,7 @@ export const MainWrapper = styled.div`
   padding: 20px;
 `;
 
-export const SideBarLogoNicknameWrapper = styled.div`
-  width: 100%;
-  height: 30%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-end;
-  color: black;
-  border-bottom: 1px solid #ccc;
-`;
-
-export const LogoWrapper = styled.div`
-  width: 100%;
-  height: 70%;
-
-  & img {
-    width: 50%;
-    height: auto;
-    max-height: 100%;
-    object-fit: cover;
-    cursor: pointer;
-  }
-`;
-
-export const NicknameWrapper = styled.div`
-  width: 100%;
-  height: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-
-  padding: 20px;
-`;
-
-export const NicknameText = styled.div`
-  font-size: 1.2rem;
-  font-weight: bold;
-`;
-
-export const QuestionText = styled.div`
-  font-size: 0.9rem;
-  color: #666;
-  margin-top: 5px;
-`;
-
-export const SideBarButtons = styled.div`
+export const SideBarButtonWrapper = styled.div`
   width: 100%;
   height: 60%;
   display: flex;
@@ -88,56 +40,6 @@ export const SideBarButtons = styled.div`
   align-items: flex-start;
   margin-top: auto;
   padding-bottom: 20px;
-`;
-
-export const ButtonWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const SideBarButton = styled.div`
-  width: 80%;
-  padding: 15px 20px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  border: 2px solid transparent;
-  transition: background-color 0.3s, border 0.3s, color 0.3s;
-
-  &:hover {
-    background-color: #e9ecef;
-    border-radius: 30px;
-    font-weight: 700;
-    color: black;
-  }
-
-  svg {
-    margin-right: 20px;
-  }
-
-  span {
-    font-size: 1rem;
-  }
-`;
-
-export const CalendarContainer = styled.div`
-  width: 80%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-`;
-
-export const DiaryContainer = styled.div`
-  width: 80%;
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
 
 export const SignupButton = styled.button`
@@ -156,19 +58,19 @@ export const SignupButton = styled.button`
   }
 `;
 
-export const CalendarHeader = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 1.2rem;
-  font-weight: bold;
+export const CalendarContainer = styled.div`
+  width: 80%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 `;
 
-export const MonthNavigationButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-size: 1.5rem;
-  margin-left: 10px;
+export const DiaryContainer = styled.div`
+  width: 80%;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 `;
