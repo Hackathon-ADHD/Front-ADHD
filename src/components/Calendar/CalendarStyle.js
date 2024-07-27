@@ -52,8 +52,8 @@ export const DayCell = styled.div`
   ${({ iscurrentmonth }) => css`
     color: ${iscurrentmonth ? "#000" : "#ccc"};
   `}
-  ${({ isSelected }) =>
-    isSelected &&
+  ${({ isselected }) =>
+    isselected &&
     css`
       &::after {
         content: "";
