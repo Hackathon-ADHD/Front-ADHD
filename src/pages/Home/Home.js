@@ -1,19 +1,10 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import { isLoggedInState } from "../../recoils/atoms/loginState";
+// import { useNavigate } from "react-router-dom";
 import * as S from "./HomeStyle";
-import SideBarButtonList from "../../components/SideNavs/SideBarButtonList/SideBarButtonList";
-import ProfileHeader from "../../components/SideNavs/ProfileHeader/ProfileHeader";
 import Calendar from "../../components/Calendar/Calendar";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const isLoggedIn = useRecoilValue(isLoggedInState);
-
-  const handleClickSignup = () => {
-    navigate("login");
-  };
+  // const navigate = useNavigate();
 
   const handleDateClick = (date) => {
     console.log("Clicked date:", date);
@@ -22,15 +13,6 @@ const Home = () => {
 
   return (
     <S.HomeContainer>
-      <S.SideBarWrapper>
-        <ProfileHeader />
-        <S.SideBarButtonWrapper>
-          <SideBarButtonList />
-        </S.SideBarButtonWrapper>
-        {!isLoggedIn && (
-          <S.SignupButton onClick={handleClickSignup}>회원가입</S.SignupButton>
-        )}
-      </S.SideBarWrapper>
       <S.MainWrapper>
         <Calendar handleDateClick={handleDateClick} />
         <S.DiaryContainer>

@@ -9,6 +9,8 @@ export const SideBarLogoNicknameWrapper = styled.div`
   justify-content: flex-end;
   color: black;
   border-bottom: 1px solid #ccc;
+
+  padding-top: 20px;
 `;
 
 export const LogoWrapper = styled.div`
