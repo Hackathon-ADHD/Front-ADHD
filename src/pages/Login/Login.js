@@ -9,6 +9,7 @@ import {
   LoginButtonWrapper,
   SocialLoginButton,
   LoginText,
+  BackgroundImageWrapper,
 } from "./LoginStyle";
 import googleSigninButton from "../../assets/images/google_signin_button.png";
 import kakaoSigninButton from "../../assets/images/kakao_signin_button.png";
@@ -93,6 +94,7 @@ const Login = () => {
           </LoginButtonWrapper>
         </LoginLeft>
         <LoginRight>
+          <BackgroundImageWrapper />
           <LoginLogoWrapper>
             <img src={loginLogo} alt="login-logo" />
           </LoginLogoWrapper>
