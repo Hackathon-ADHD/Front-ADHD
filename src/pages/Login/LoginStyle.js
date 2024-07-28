@@ -1,9 +1,9 @@
 import styled from "styled-components";
+import loginBackground from "../../assets/images/LoginBackground.png";
 
 export const LoginWrapper = styled.div`
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
   display: flex;
 
   @media (max-width: 768px) {
@@ -33,16 +33,26 @@ export const LoginRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 10px;
-
-  background-color: #d8ebf2;
+  position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
     height: 50%;
     order: 1;
   }
+`;
+
+export const BackgroundImageWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  background-image: url(${loginBackground});
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 `;
 
 export const LoginTextWrapper = styled.div`
@@ -101,7 +111,6 @@ export const SocialLoginButton = styled.button`
   & img {
     width: 100%;
     height: 60px;
-
     pointer-events: none;
   }
 
