@@ -16,7 +16,6 @@ import {
   SubmitButton,
   InputLabel,
   InputContainer,
-  InputUnderline,
   GuideText,
 } from "./SignupStyle";
 import signUpLogo from "../../assets/images/LoginLogoImage.png";
