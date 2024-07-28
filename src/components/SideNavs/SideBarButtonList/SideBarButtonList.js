@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaFileAlt, FaRegFileAlt, FaRegUser, FaUser } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
@@ -10,12 +10,13 @@ import * as S from "./SideBarButtonListStyle";
 
 const SideBarButtonList = () => {
   const navigate = useNavigate();
+  const [clickedIndex, setClickedIndex] = useState(null);
 
-  const handleClickHome = () => {
-    navigate("/");
-  };
-  const handleClickDiary = () => {
-    navigate("diary");
+  const handleButtonClick = (index, onClick) => {
+    setClickedIndex(index);
+    if (onClick) {
+      onClick();
+    }
   };
 
   return (
@@ -23,7 +24,8 @@ const SideBarButtonList = () => {
       <SideBarButton
         defaultIcon={<FiHome />}
         hoveredIcon={<GoHomeFill />}
-        onClick={handleClickHome}
+        isClicked={clickedIndex === 0}
+        onClick={() => handleButtonClick(0, () => navigate("/"))}
       >
         Home
       </SideBarButton>
@@ -31,7 +33,8 @@ const SideBarButtonList = () => {
       <SideBarButton
         defaultIcon={<FaRegFileAlt />}
         hoveredIcon={<FaFileAlt />}
-        onClick={handleClickDiary}
+        isClicked={clickedIndex === 1}
+        onClick={() => handleButtonClick(1, () => navigate("diary"))}
       >
         일기 작성하기
       </SideBarButton>
@@ -39,6 +42,8 @@ const SideBarButtonList = () => {
       <SideBarButton
         defaultIcon={<PiChatsTeardrop />}
         hoveredIcon={<PiChatsTeardropFill />}
+        isClicked={clickedIndex === 2}
+        onClick={() => handleButtonClick(2, null)}
       >
         1년전 나의 오늘
       </SideBarButton>
@@ -46,11 +51,18 @@ const SideBarButtonList = () => {
       <SideBarButton
         defaultIcon={<RiNotification2Line />}
         hoveredIcon={<RiNotification2Fill />}
+        isClicked={clickedIndex === 3}
+        onClick={() => handleButtonClick(3, null)}
       >
         알림
       </SideBarButton>
 
-      <SideBarButton defaultIcon={<FaRegUser />} hoveredIcon={<FaUser />}>
+      <SideBarButton
+        defaultIcon={<FaRegUser />}
+        hoveredIcon={<FaUser />}
+        isClicked={clickedIndex === 4}
+        onClick={() => handleButtonClick(4, null)}
+      >
         My Page
       </SideBarButton>
     </S.ButtonWrapper>
