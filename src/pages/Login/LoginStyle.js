@@ -105,7 +105,6 @@ export const SocialLoginButton = styled.button`
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  background-color: red;
   padding: 0;
 
   & img {
