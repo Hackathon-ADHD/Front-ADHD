@@ -6,7 +6,6 @@ import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
 import NaverAuthRedirect from "../services/NaverAuthRedirection";
-import Signup from "../pages/Signup/Signup";
 import Diary from "../pages/Diary/Diary";
 import Layout from "../Layout/Layout";
 
