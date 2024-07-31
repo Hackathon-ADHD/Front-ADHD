@@ -4,11 +4,12 @@ export const LayoutWrapper = styled.div`
   display: flex;
   height: 100vh;
   overflow-x: hidden;
+  background-color: #d8ebf2;
 `;
 
 export const SideBar = styled.div`
   flex: 0 0 20%;
-  background-color: #f8f9fa;
+  background-color: white;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
@@ -17,7 +18,7 @@ export const SideBar = styled.div`
 export const MainWrapper = styled.div`
   flex: 1;
   padding: 20px;
-  background-color: #d8ebf2;
+
   overflow-x: hidden;
 `;
 

@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
-
+import Notification from "../pages/Notification/Notification";
 import Signup from "../pages/Signup/Signup";
 import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
 import NaverAuthRedirect from "../services/NaverAuthRedirection";
@@ -15,6 +15,7 @@ const AppRouter = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="diary" element={<Diary />} />
+        <Route path="notification" element={<Notification />} />
       </Route>
       <Route path="/login" element={<Login />} />
       <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
