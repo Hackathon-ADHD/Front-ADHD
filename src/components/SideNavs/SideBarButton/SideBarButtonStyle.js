@@ -8,7 +8,6 @@ export const SideBarButtonStyle = styled.div`
   align-items: center;
   cursor: ${({ isClicked }) => (isClicked ? "default" : "pointer")};
   border: 2px solid transparent;
-  transition: background-color 0.3s, border 0.3s, color 0.3s;
 
   ${({ isHovered }) =>
     isHovered &&

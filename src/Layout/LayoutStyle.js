@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const LayoutWrapper = styled.div`
   display: flex;
   height: 100vh;
-  overflow-x: hidden;
   background-color: #d8ebf2;
+  overflow-y: hidden;
 `;
 
 export const SideBar = styled.div`
+  height: 100%;
   flex: 0 0 20%;
   background-color: white;
   display: flex;
@@ -18,8 +19,9 @@ export const SideBar = styled.div`
 export const MainWrapper = styled.div`
   flex: 1;
   padding: 20px;
-
+  overflow-y: auto;
   overflow-x: hidden;
+  height: 100%;
 `;
 
 export const SideBarButtonWrapper = styled.div`
