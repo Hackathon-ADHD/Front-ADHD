@@ -11,25 +11,17 @@ import {
   LoginText,
   BackgroundImageWrapper,
 } from "./LoginStyle";
-import googleSigninButton from "../../assets/images/google_signin_button.png";
-import kakaoSigninButton from "../../assets/images/kakao_signin_button.png";
-import naverSigninButton from "../../assets/images/naver_signin_button.png";
+
+import kakaoSigninButton from "../../assets/images/kakao_login_image.png";
+import naverSigninButton from "../../assets/images/naver_login_image.png";
 import loginLogo from "../../assets/images/LoginLogoImage.png";
 import { useTypingAnime } from "../../components/TypingTextAnimation";
 import { GlobalStyle } from "../../assets/styles/globalStyle";
-
-const SCOPE =
-  "https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email";
 const STATE = "test";
 
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  const handleGoogleLogin = () => {
-    const googleAuthUrl = `https://accounts.google.com/o/oauth2/auth?client_id=${process.env.REACT_APP_GOOGLE_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_GOOGLE_REDIRECT_URI}&response_type=code&scope=${SCOPE}`;
-    window.location.href = googleAuthUrl;
-  };
 
   const handleKakaoLogin = () => {
     const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
@@ -74,12 +66,6 @@ const Login = () => {
           </LoginTextWrapper>
           <LoginButtonWrapper>
             <SocialLoginButton
-              className="google_login_button"
-              onClick={handleGoogleLogin}
-            >
-              <img src={googleSigninButton} alt="google-login" />
-            </SocialLoginButton>
-            <SocialLoginButton
               className="kakao_login_button"
               onClick={handleKakaoLogin}
             >
@@ -94,7 +80,6 @@ const Login = () => {
           </LoginButtonWrapper>
         </LoginLeft>
         <LoginRight>
-          <BackgroundImageWrapper />
           <LoginLogoWrapper>
             <img src={loginLogo} alt="login-logo" />
           </LoginLogoWrapper>

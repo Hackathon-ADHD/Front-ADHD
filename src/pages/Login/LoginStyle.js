@@ -30,29 +30,20 @@ export const LoginLeft = styled.div`
 export const LoginRight = styled.div`
   width: 60%;
   height: 100%;
+  border-radius: 10px;
+  background-image: url(${loginBackground});
+  background-repeat: no-repeat;
+  background-size: 105% 105%;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
 
   @media (max-width: 768px) {
     width: 100%;
     height: 50%;
     order: 1;
   }
-`;
-
-export const BackgroundImageWrapper = styled.div`
-  width: 100%;
-  height: 100%;
-  background-image: url(${loginBackground});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 `;
 
 export const LoginTextWrapper = styled.div`
@@ -95,21 +86,21 @@ export const LoginButtonWrapper = styled.div`
   }
 `;
 
-export const SocialLoginButton = styled.button`
+export const SocialLoginButton = styled.div`
   width: 230px;
-  height: 60px;
-  margin: 10px 0;
+  height: auto;
+  margin: 15px 0;
+
   display: flex;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
-  padding: 0;
 
   & img {
     width: 100%;
-    height: 60px;
+    object-fit: contain;
     pointer-events: none;
   }
 
