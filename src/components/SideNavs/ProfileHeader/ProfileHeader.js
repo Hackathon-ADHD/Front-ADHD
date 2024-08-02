@@ -1,15 +1,17 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import LogoImage from "../../../assets/images/LogoImage.png";
 import { useRecoilValue } from "recoil";
 import { profileNameState } from "../../../recoils/atoms/loginState";
 import * as S from "./ProfileHeaderStyle";
 
-const ProfileHeader = () => {
+const ProfileHeader = ({ resetHomeClick }) => {
   const navigate = useNavigate();
   const profileName = useRecoilValue(profileNameState);
 
   const handleClickLogo = () => {
+    if (resetHomeClick) {
+      resetHomeClick();
+    }
     navigate("/");
   };
 

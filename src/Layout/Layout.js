@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import ProfileHeader from "../components/SideNavs/ProfileHeader/ProfileHeader";
@@ -16,6 +16,7 @@ import {
 const Layout = () => {
   const navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInState);
+  const [resetHomeClick, setResetHomeClick] = useState(null);
 
   const handleClickSignup = () => {
     navigate("/login");
@@ -24,9 +25,9 @@ const Layout = () => {
   return (
     <LayoutWrapper>
       <SideBar>
-        <ProfileHeader />
+        <ProfileHeader resetHomeClick={resetHomeClick} />
         <SideBarButtonWrapper>
-          <SideBarButtonList />
+          <SideBarButtonList setResetHomeClick={setResetHomeClick} />
         </SideBarButtonWrapper>
         {!isLoggedIn && (
           <SignupButtonWrapper>

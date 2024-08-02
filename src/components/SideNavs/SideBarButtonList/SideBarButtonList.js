@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaFileAlt, FaRegFileAlt, FaRegUser, FaUser } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
@@ -8,7 +8,7 @@ import { GoHomeFill } from "react-icons/go";
 import SideBarButton from "../SideBarButton/SideBarButton";
 import * as S from "./SideBarButtonListStyle";
 
-const SideBarButtonList = () => {
+const SideBarButtonList = ({ setResetHomeClick }) => {
   const navigate = useNavigate();
   const [clickedIndex, setClickedIndex] = useState(null);
 
@@ -19,17 +19,27 @@ const SideBarButtonList = () => {
     }
   };
 
+  const resetClickedIndex = () => setClickedIndex(null);
+
+  useEffect(() => {
+    setResetHomeClick(() => resetClickedIndex);
+  }, [setResetHomeClick]);
+
   return (
     <S.ButtonWrapper>
       <SideBarButton
         defaultIcon={<FiHome />}
         hoveredIcon={<GoHomeFill />}
         isClicked={clickedIndex === 0}
-        onClick={() => handleButtonClick(0, () => navigate("/"))}
+        onClick={() => {
+          handleButtonClick(0, () => {
+            resetClickedIndex();
+            navigate("/");
+          });
+        }}
       >
         Home
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<FaRegFileAlt />}
         hoveredIcon={<FaFileAlt />}
@@ -38,7 +48,6 @@ const SideBarButtonList = () => {
       >
         일기 작성하기
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<PiChatsTeardrop />}
         hoveredIcon={<PiChatsTeardropFill />}
@@ -47,7 +56,6 @@ const SideBarButtonList = () => {
       >
         1년전 나의 오늘
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<RiNotification2Line />}
         hoveredIcon={<RiNotification2Fill />}
@@ -56,7 +64,6 @@ const SideBarButtonList = () => {
       >
         알림
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<FaRegUser />}
         hoveredIcon={<FaUser />}
