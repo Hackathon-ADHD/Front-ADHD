@@ -2,11 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
-
 import Signup from "../pages/Signup/Signup";
 import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
 import NaverAuthRedirect from "../services/NaverAuthRedirection";
-import Signup from "../pages/Signup/Signup";
 import Diary from "../pages/Diary/Diary";
 import Layout from "../Layout/Layout";
 
