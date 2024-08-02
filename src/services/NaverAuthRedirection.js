@@ -14,33 +14,24 @@ const NaverAuthRedirect = () => {
     console.log("Authorization Code:", authorizationCode);
     console.log("State:", state);
 
-    if (authorizationCode) {
-      const tokenEndpoint = "https://nid.naver.com/oauth2.0/token";
-      const data = new URLSearchParams({
-        grant_type: "authorization_code",
-        client_id: process.env.REACT_APP_NAVER_CLIENT_ID,
-        client_secret: process.env.REACT_APP_NAVER_CLIENT_PW,
-        code: authorizationCode,
-        state: state,
-      });
+    if (authorizationCode && state) {
+      const backendEndpoint = `http://52.78.121.130:8080/login/naver?code=${authorizationCode}&state=${state}`;
 
       axios
-        .post(tokenEndpoint, data, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        })
+        .get(backendEndpoint)
         .then((response) => {
           const accessToken = response.data.access_token;
-
-          console.log("Access Token:", accessToken);
+          const refreshToken = response.data.refresh_token;
+          const email = response.data.email;
 
           localStorage.setItem("naverAccessToken", accessToken);
+          localStorage.setItem("naverRefreshToken", refreshToken);
+          localStorage.setItem("naverEmail", email);
 
           navigate("/signup");
         })
         .catch((error) => {
-          console.log(
+          console.error(
             "Error:",
             error.response ? error.response.data : error.message
           );
