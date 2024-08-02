@@ -52,7 +52,7 @@ const SideBarButtonList = () => {
         defaultIcon={<RiNotification2Line />}
         hoveredIcon={<RiNotification2Fill />}
         isClicked={clickedIndex === 3}
-        onClick={() => handleButtonClick(3, null)}
+        onClick={() => handleButtonClick(3, () => navigate("notification"))}
       >
         알림
       </SideBarButton>
