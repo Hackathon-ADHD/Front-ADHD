@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 export const CalendarContainer = styled.div`
   width: 80%;
+  height: 100%;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
@@ -45,7 +46,7 @@ export const WeekRow = styled.div`
 
 export const DayCell = styled.div`
   width: 14.28%;
-  padding: 10px;
+  padding: 30px;
   box-sizing: border-box;
   text-align: center;
   position: relative;

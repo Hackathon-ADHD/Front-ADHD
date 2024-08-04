@@ -10,10 +10,15 @@ export const LayoutWrapper = styled.div`
 export const SideBar = styled.div`
   height: 100%;
   flex: 0 0 20%;
+  min-width: 200px;
   background-color: white;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
+
+  @media (max-width: 768px) {
+    flex: 0 0 250px;
+  }
 `;
 
 export const MainWrapper = styled.div`
