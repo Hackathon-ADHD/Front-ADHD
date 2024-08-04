@@ -6,12 +6,12 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
 `;
 
 export const MainWrapper = styled.div`
   width: 100%;
-  height: auto;
+  height: 100%;
   max-height: 100%;
   margin: 0 auto;
   padding: 20px;
@@ -20,6 +20,20 @@ export const MainWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   overflow-y: auto;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
 `;
 
 export const CalendarContainer = styled.div`

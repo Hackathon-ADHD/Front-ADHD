@@ -3,22 +3,19 @@ import styled from "styled-components";
 export const LayoutWrapper = styled.div`
   display: flex;
   height: 100vh;
+  width: 100vw;
   background-color: #d8ebf2;
-  overflow-y: hidden;
+  overflow: hidden;
 `;
 
 export const SideBar = styled.div`
-  height: 100%;
-  flex: 0 0 20%;
-  min-width: 200px;
+  height: 100vh;
+  flex: 0 0 250px;
+  min-width: 250px;
   background-color: white;
   display: flex;
   flex-direction: column;
   border-right: 1px solid #ccc;
-
-  @media (max-width: 768px) {
-    flex: 0 0 250px;
-  }
 `;
 
 export const MainWrapper = styled.div`
@@ -26,7 +23,21 @@ export const MainWrapper = styled.div`
   padding: 20px;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100%;
+  height: 100vh;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
 `;
 
 export const SideBarButtonWrapper = styled.div`
