@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { FaFileAlt, FaRegFileAlt, FaRegUser, FaUser } from "react-icons/fa";
 import { FiHome } from "react-icons/fi";
 import { RiNotification2Line, RiNotification2Fill } from "react-icons/ri";
 import { PiChatsTeardrop, PiChatsTeardropFill } from "react-icons/pi";
+import {
+  BsFileEarmarkBarGraph,
+  BsFileEarmarkBarGraphFill,
+} from "react-icons/bs";
 import { GoHomeFill } from "react-icons/go";
 import SideBarButton from "../SideBarButton/SideBarButton";
 import * as S from "./SideBarButtonListStyle";
 
-const SideBarButtonList = () => {
+const SideBarButtonList = ({ setResetHomeClick }) => {
   const navigate = useNavigate();
   const [clickedIndex, setClickedIndex] = useState(null);
 
@@ -19,17 +23,27 @@ const SideBarButtonList = () => {
     }
   };
 
+  const resetClickedIndex = () => setClickedIndex(null);
+
+  useEffect(() => {
+    setResetHomeClick(() => resetClickedIndex);
+  }, [setResetHomeClick]);
+
   return (
     <S.ButtonWrapper>
       <SideBarButton
         defaultIcon={<FiHome />}
         hoveredIcon={<GoHomeFill />}
         isClicked={clickedIndex === 0}
-        onClick={() => handleButtonClick(0, () => navigate("/"))}
+        onClick={() => {
+          handleButtonClick(0, () => {
+            resetClickedIndex();
+            navigate("/");
+          });
+        }}
       >
         Home
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<FaRegFileAlt />}
         hoveredIcon={<FaFileAlt />}
@@ -38,30 +52,35 @@ const SideBarButtonList = () => {
       >
         일기 작성하기
       </SideBarButton>
-
       <SideBarButton
-        defaultIcon={<PiChatsTeardrop />}
-        hoveredIcon={<PiChatsTeardropFill />}
+        defaultIcon={<BsFileEarmarkBarGraph />}
+        hoveredIcon={<BsFileEarmarkBarGraphFill />}
         isClicked={clickedIndex === 2}
         onClick={() => handleButtonClick(2, null)}
       >
-        1년전 나의 오늘
+        주차별 행복 수치
       </SideBarButton>
-
       <SideBarButton
-        defaultIcon={<RiNotification2Line />}
-        hoveredIcon={<RiNotification2Fill />}
+        defaultIcon={<PiChatsTeardrop />}
+        hoveredIcon={<PiChatsTeardropFill />}
         isClicked={clickedIndex === 3}
         onClick={() => handleButtonClick(3, null)}
       >
+        1년전 나의 오늘
+      </SideBarButton>
+      <SideBarButton
+        defaultIcon={<RiNotification2Line />}
+        hoveredIcon={<RiNotification2Fill />}
+        isClicked={clickedIndex === 4}
+        onClick={() => handleButtonClick(4, () => navigate("notification"))}
+      >
         알림
       </SideBarButton>
-
       <SideBarButton
         defaultIcon={<FaRegUser />}
         hoveredIcon={<FaUser />}
-        isClicked={clickedIndex === 4}
-        onClick={() => handleButtonClick(4, null)}
+        isClicked={clickedIndex === 5}
+        onClick={() => handleButtonClick(5, null)}
       >
         My Page
       </SideBarButton>

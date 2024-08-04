@@ -2,10 +2,10 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
-import GoogleAuthRedirect from "../pages/Login/GoogleAuthRedirect";
-import KakaoAuthRedirect from "../pages/Login/KakaoAuthRedirection";
-// import NaverAuthRedirect from "../pages/Login/NaverAuthRedirection";
+import Notification from "../pages/Notification/Notification";
 import Signup from "../pages/Signup/Signup";
+import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
+import NaverAuthRedirect from "../services/NaverAuthRedirection";
 import Diary from "../pages/Diary/Diary";
 import Layout from "../Layout/Layout";
 
@@ -15,11 +15,11 @@ const AppRouter = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="diary" element={<Diary />} />
+        <Route path="notification" element={<Notification />} />
       </Route>
       <Route path="/login" element={<Login />} />
-      <Route path="/google-login" element={<GoogleAuthRedirect />} />
       <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
-      {/* <Route path="/naver-login" element={<NaverAuthRedirect />} /> */}
+      <Route path="/naver-login" element={<NaverAuthRedirect />} />
       <Route path="/signup" element={<Signup />} />
     </Routes>
   );
