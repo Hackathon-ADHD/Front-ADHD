@@ -6,10 +6,6 @@ import { tokenState } from "../../recoils/atoms/authAtoms";
 import { isLoggedInState } from "../../recoils/atoms/loginState";
 import { userProfileState } from "../../recoils/atoms/userAtom";
 import {
-  isLoggedInState,
-  profileNameState,
-} from "../../recoils/atoms/loginState";
-import {
   SignUpWrapper,
   SignUpLeft,
   SignUpRight,
@@ -26,14 +22,13 @@ import signUpLogo from "../../assets/images/LoginLogoImage.png";
 import cake from "../../assets/images/cake.png";
 
 const Signup = () => {
-
-    const [profileName, setProfileName] = useState("");
-    const [birthdate, setBirthdate] = useState("");
-    const [step, setStep] = useState(1);
-    const setIsLoggedIn = useSetRecoilState(isLoggedInState);
-    const setTokenState = useSetRecoilState(tokenState);
-    const setUserProfileState = useSetRecoilState(userProfileState);
-    const navigate = useNavigate();
+  const [profileName, setProfileName] = useState("");
+  const [birthdate, setBirthdate] = useState("");
+  const [step, setStep] = useState(1);
+  const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+  const setTokenState = useSetRecoilState(tokenState);
+  const setUserProfileState = useSetRecoilState(userProfileState);
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     if (step === 1) {
@@ -55,27 +50,26 @@ const Signup = () => {
           birthDay: birthdate, // 변수명 변경
         };
 
-                console.log("Sending POST request with data:", postData); // 요청 전 데이터 출력
+        console.log("Sending POST request with data:", postData); // 요청 전 데이터 출력
 
-                axiosInstance
-                    .post("/login/complete-registration", postData)
-                    .then((response) => {
-                        console.log("POST request successful:", response.data); // 성공 시 응답 데이터 출력
-                        setIsLoggedIn(true);
-                        setTokenState(response.data.token); // 서버 응답에서 토큰 설정
-                        setUserProfileState({
-                            name: profileName,
-                            birthdate: birthdate,
-                        });
-                        navigate("/"); // 기본 라우터로 이동
-                    })
-                    .catch((error) => {
-                        console.error("Error completing the registration:", error); // 에러 발생 시 에러 출력
-                    });
-            }
-        }
-    };
-
+        axiosInstance
+          .post("/login/complete-registration", postData)
+          .then((response) => {
+            console.log("POST request successful:", response.data); // 성공 시 응답 데이터 출력
+            setIsLoggedIn(true);
+            setTokenState(response.data.token); // 서버 응답에서 토큰 설정
+            setUserProfileState({
+              name: profileName,
+              birthdate: birthdate,
+            });
+            navigate("/"); // 기본 라우터로 이동
+          })
+          .catch((error) => {
+            console.error("Error completing the registration:", error); // 에러 발생 시 에러 출력
+          });
+      }
+    }
+  };
 
   return (
     <SignUpWrapper>
