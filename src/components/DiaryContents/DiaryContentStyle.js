@@ -105,3 +105,12 @@ export const ContentText = styled.div`
     font-size: 0.8rem;
   }
 `;
+
+export const AnalysisShowButton = styled.div`
+  margin-top: 20px;
+  border: none;
+  background-color: #d9d9d9;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+`;

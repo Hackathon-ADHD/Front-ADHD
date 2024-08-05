@@ -1,7 +1,8 @@
 import React from "react";
 import * as S from "./DiaryContentStyle";
 import { GoKebabHorizontal } from "react-icons/go";
-import { getAnalysisByDiaryId } from "../../datas/diaryAnalysisDatas";
+import { getAnalysisByDiaryId } from "../../apis/diary";
+import { getEmotionByType } from "../../utils/emotionSelector";
 
 /**
  *
@@ -11,25 +12,34 @@ import { getAnalysisByDiaryId } from "../../datas/diaryAnalysisDatas";
  * content
  * emotion
  */
-const DiaryContent = ({ entry }) => {
+const DiaryContent = (props) => {
   const handleAnalysisButtonClick = () => {
-    getAnalysisByDiaryId(entry.id).then((response) => console.log(response));
+    getAnalysisByDiaryId(props.entry.id).then((response) => {
+      props.setSelectedDate(props.entry.date);
+      props.setAnalysis(response);
+      props.setIsAnalysisViewOpen(true);
+    });
   };
 
   return (
     <S.DiaryContentContainer>
       <S.DiaryHeader>
         <S.CharacterImageWrapper>
-          <S.CharacterImage src={entry.characterImage} alt="Character" />
+          <S.CharacterImage
+            src={getEmotionByType(props.entry.emotion)}
+            alt="Character"
+          />
         </S.CharacterImageWrapper>
-        <S.DateText>{entry.date}</S.DateText>
+        <S.DateText>{props.entry.date}</S.DateText>
         <S.MenuIconWrapper>
           <GoKebabHorizontal cursor={"pointer"} />
         </S.MenuIconWrapper>
       </S.DiaryHeader>
-      <S.ContentText>{entry.content}</S.ContentText>
+      <S.ContentText>{props.entry.content}</S.ContentText>
 
-      <button onClick={handleAnalysisButtonClick}>분석^^</button>
+      <S.AnalysisShowButton onClick={handleAnalysisButtonClick}>
+        일기 분석 보기
+      </S.AnalysisShowButton>
     </S.DiaryContentContainer>
   );
 };
