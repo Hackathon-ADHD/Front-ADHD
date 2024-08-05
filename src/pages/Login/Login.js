@@ -25,45 +25,28 @@ const STATE = "test";
 
 const Login = () => {
     const location = useLocation();
-    const navigate = useNavigate();
-    const setTokenState = useSetRecoilState(tokenState);
-    const setIsLoggedIn = useSetRecoilState(isLoggedInState);
+  const navigate = useNavigate();
 
-    const handleKakaoLogin = () => {
-        const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
-        window.location.href = kakaoAuthUrl;
-    };
 
-    const handleNaverLogin = () => {
-        const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
-        window.location.href = naverAuthUrl;
-    };
+  const handleKakaoLogin = () => {
+    const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
+    window.location.href = kakaoAuthUrl;
+  };
 
-    useEffect(() => {
-        const fetchToken = async (code) => {
-            try {
-                const response = await axios.post("http://your-backend-url.com/auth/token", {
-                    code,
-                });
-                const { token } = response.data;
-                setTokenState(token); // Recoil 상태에 토큰 설정
-                localStorage.setItem("token", token); // 로컬스토리지에 토큰 저장
-                setIsLoggedIn(true);
-                navigate("/signup"); // 회원가입 페이지로 이동
-            } catch (error) {
-                console.error("Error fetching token:", error);
-                navigate("/404"); // 에러 시 404 페이지로 이동
-            }
-        };
+  const handleNaverLogin = () => {
+    const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
+    window.location.href = naverAuthUrl;
+  };
 
-        const params = new URLSearchParams(location.search);
-        const authorizationCode = params.get("code");
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const authorizationCode = params.get("code");
 
-        if (authorizationCode) {
-            fetchToken(authorizationCode);
-        }
-    }, [location.search, navigate, setTokenState, setIsLoggedIn]);
-
+    if (authorizationCode) {
+      navigate("/signup");
+    }
+  }, [location.search, navigate]);
+  
     const { animeFinishFlag: firstFlag, TypingTextDiv: FirstText } = useTypingAnime("오늘 하루도", 100);
     const { animeFinishFlag: secondFlag, TypingTextDiv: SecondText } = useTypingAnime(
         "수고했을 당신에게",
