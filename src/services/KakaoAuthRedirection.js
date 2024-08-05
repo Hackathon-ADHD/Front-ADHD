@@ -11,24 +11,18 @@ const KakaoAuthRedirect = () => {
     const authorizationCode = params.get("code");
 
     if (authorizationCode) {
-      const tokenEndpoint = "https://kauth.kakao.com/oauth/token";
-      const data = new URLSearchParams({
-        grant_type: "authorization_code",
-        client_id: process.env.REACT_APP_KAKAO_CLIENT_ID,
-        redirect_uri: process.env.REACT_APP_KAKAO_REDIRECT_URI,
-        code: authorizationCode,
-      });
+      const backendPoint = `http://52.78.121.130:8080/login/kakao?code=${authorizationCode}`;
 
       axios
-        .post(tokenEndpoint, data, {
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded",
-          },
-        })
+        .get(backendPoint)
         .then((response) => {
           const accessToken = response.data.access_token;
+          const refreshToken = response.data.refresh_token;
+          const email = response.data.email;
 
-          localStorage.setItem("kakaoAccessToken", accessToken);//
+          localStorage.setItem("kakaoAccessToken", accessToken);
+          localStorage.setItem("kakaoRefreshToken", refreshToken);
+          localStorage.setItem("kakaoEmail", email);
 
           navigate("/signup");
         })
@@ -37,13 +31,11 @@ const KakaoAuthRedirect = () => {
             "Error:",
             error.response ? error.response.data : error.message
           );
-          if (error.response) {
-            console.error("Status:", error.response.status);
-            console.error("Headers:", error.response.headers);
-          }
+          // if (error.response) {
+          //   console.error("Status:", error.response.status);
+          //   console.error("Headers:", error.response.headers);
+          // }
         });
-    } else {
-      console.error("No authorization code found");
     }
   }, [location.search, navigate]);
 
