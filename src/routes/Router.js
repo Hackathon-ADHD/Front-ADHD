@@ -8,6 +8,8 @@ import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
 import NaverAuthRedirect from "../services/NaverAuthRedirection";
 import Diary from "../pages/Diary/Diary";
 import Layout from "../Layout/Layout";
+import DiaryReview from "../pages/Diary/DiaryReview";
+
 import OneYearAgoToday from "../pages/OneYearAgoToday/OneYearAgoToday";
 import DiaryGraph from "../pages/DiaryGraph/DiaryGraph";
 
@@ -17,6 +19,7 @@ const AppRouter = () => {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="diary" element={<Diary />} />
+        <Route path="review" element={<DiaryReview />} />
         <Route path="notification" element={<Notification />} />
         <Route path="oneyearagotoday" element={<OneYearAgoToday />} />
         <Route path="diary-graph" element={<DiaryGraph />} />
