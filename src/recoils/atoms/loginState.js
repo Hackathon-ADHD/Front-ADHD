@@ -8,3 +8,7 @@ export const profileNameState = atom({
   key: "profileNameState",
   default: "",
 });
+export const loginTokenState = atom({
+  key: "loginTokenState",
+  default: "",
+});
