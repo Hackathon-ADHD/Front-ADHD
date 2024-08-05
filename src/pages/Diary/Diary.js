@@ -54,19 +54,28 @@ const Diary = () => {
 
     const handleAnalyzeClick = async () => {
         try {
-            const analyzeRequest = axiosInstance.post("/api/chatgpt/diary-analyze", {
-                text: diaryText,
+            const analyzeRequest = axiosInstance.post("/api/chatgpt/diary-analyzes", null, {
+                params: {
+                    diaryContents: diaryText,
+                },
             });
 
-            const recommendSongRequest = axiosInstance.post("/api/chatgpt/recommend-song", {
-                text: diaryText,
+            const recommendSongRequest = axiosInstance.post("/api/chatgpt/recommend-songs", null, {
+                params: {
+                    diaryContents: diaryText,
+                },
             });
 
             const [analyzeResponse, recommendSongResponse] = await Promise.all([analyzeRequest, recommendSongRequest]);
 
             console.log(analyzeResponse.data); // 서버에서 받은 분석 응답 데이터를 처리합니다.
             console.log(recommendSongResponse.data); // 서버에서 받은 추천 곡 응답 데이터를 처리합니다.
-            navigate("/review");
+            navigate("/review", {
+                state: {
+                    diaryFeedback: analyzeResponse.data.diaryFeedback,
+                    songRecommendation: recommendSongResponse.data.songRecommendation,
+                },
+            });
         } catch (error) {
             console.error("요청 중 오류가 발생했습니다.", error);
         }
