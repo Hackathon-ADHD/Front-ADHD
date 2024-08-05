@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { formatDate } from "../../utils/formatter";
+import Review from "../Diary/DiaryReview";
 
 const OneYearAgoToday = () => {
   const [diaries, setDiaries] = useState([]);
@@ -54,25 +55,15 @@ const OneYearAgoToday = () => {
   }, [diaries]);
 
   return (
-    <Container>
+    <div style={{ paddingLeft: "20px" }}>
       <h1>1년 전 나의 오늘</h1>
-      <DiaryContainer>
-        <DiaryEntry key={diaries.id}>
-          <h2>{diaries.date}</h2>
-          <p>{diaries.content}</p>
-          <p>Emotion: {diaries.emotion}</p>
-        </DiaryEntry>
-      </DiaryContainer>
-
-      <DiaryContainer>
-        <DiaryEntry key={diaries.id}>
-          <AnalysisEntry key={diaries.id}>
-            <p>{diaries.analyzedContents}</p>
-            <p>Recommended Song: {diaries.recommendSongs}</p>
-          </AnalysisEntry>
-        </DiaryEntry>
-      </DiaryContainer>
-    </Container>
+      <Review
+        diaryFeedback={diaries.analyzedContents}
+        characterImg={diaries.emotion}
+        songRecommendation={diaries.recommendSongs}
+        dateType="작년"
+      />
+    </div>
   );
 };
 
@@ -88,25 +79,3 @@ const getAnalysisByDiaryId = async (diaryId) => {
 };
 
 export default OneYearAgoToday;
-
-const Container = styled.div`
-  padding: 20px;
-`;
-
-const DiaryContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-
-const DiaryEntry = styled.div`
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-`;
-
-const AnalysisEntry = styled.div`
-  margin-top: 10px;
-  padding: 10px;
-  border-top: 1px solid #eee;
-`;
