@@ -8,21 +8,22 @@ import KakaoAuthRedirect from "../services/KakaoAuthRedirection";
 import NaverAuthRedirect from "../services/NaverAuthRedirection";
 import Diary from "../pages/Diary/Diary";
 import Layout from "../Layout/Layout";
-
+import DiaryReview from "../pages/Diary/DiaryReview";
 const AppRouter = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="diary" element={<Diary />} />
-        <Route path="notification" element={<Notification />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
-      <Route path="/naver-login" element={<NaverAuthRedirect />} />
-      <Route path="/signup" element={<Signup />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="diary" element={<Diary />} />
+                <Route path="review" element={<DiaryReview />} />
+                <Route path="notification" element={<Notification />} />
+            </Route>
+            <Route path="/login" element={<Login />} />
+            <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
+            <Route path="/naver-login" element={<NaverAuthRedirect />} />
+            <Route path="/signup" element={<Signup />} />
+        </Routes>
+    );
 };
 
 export default AppRouter;
