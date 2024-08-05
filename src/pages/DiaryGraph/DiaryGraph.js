@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import EmotionChart from "../../components/EmotionChart/EmotionChart";
-import { diaryDatas } from "../../datas/diaryDatas";
-import { diaryEmotionScoreDatas } from "../../datas/diaryEmotionScoreDatas";
+import { getAllDiaries, getEmotionScores } from "../../apis/diary";
 import {
   Wrapper,
   Title,
@@ -12,12 +11,15 @@ import {
 } from "./DiaryGraphStyle";
 
 const DiaryGraph = () => {
+  const [diaryDatas, setDiaryDatas] = useState(null);
+  const [diaryEmotionScoreDatas, setDiaryEmotionScoreDatas] = useState(null);
+
   const [chartData, setChartData] = useState([]);
   const [averageScore, setAverageScore] = useState(0);
   const [averageScorePercentage, setAverageScorePercentage] = useState(0);
   const [message, setMessage] = useState("");
 
-  useEffect(() => {
+  const analysisChart = () => {
     const dateMap = {};
 
     // 2024년 데이터만 필터링
@@ -27,8 +29,9 @@ const DiaryGraph = () => {
 
     filteredDiaries.forEach((diary) => {
       const scoreEntry = diaryEmotionScoreDatas.find(
-        (score) => score.emotionScoreId === diary.id
+        (score) => score.id === diary.id
       );
+
       if (scoreEntry) {
         const score = parseInt(scoreEntry.score, 10);
         if (dateMap[diary.date]) {
@@ -45,13 +48,7 @@ const DiaryGraph = () => {
       score: dateMap[date].totalScore / dateMap[date].count,
     }));
 
-    // 7개 이하일 경우 그대로, 7개 이상일 경우 적절히 샘플링
-    const sampledData =
-      averagedData.length <= 7
-        ? averagedData
-        : averagedData.filter(
-            (_, index) => index % Math.ceil(averagedData.length / 7) === 0
-          );
+    const sampledData = averagedData;
 
     // 샘플링된 데이터의 평균 점수 계산
     const totalScore = averagedData.reduce(
@@ -78,7 +75,22 @@ const DiaryGraph = () => {
     } else {
       setMessage("이번 주는 조금 힘든 한 주였어요.");
     }
+  };
+
+  useEffect(() => {
+    getAllDiaries().then((response) => {
+      setDiaryDatas(response);
+    });
+
+    getEmotionScores().then((response) => {
+      setDiaryEmotionScoreDatas(response);
+    });
   }, []);
+
+  useEffect(() => {
+    if (diaryDatas === null || diaryEmotionScoreDatas === null) return;
+    analysisChart();
+  }, [diaryDatas, diaryEmotionScoreDatas]);
 
   return (
     <Wrapper>
