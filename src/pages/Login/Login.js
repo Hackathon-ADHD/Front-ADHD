@@ -22,6 +22,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+
   const handleKakaoLogin = () => {
     const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
     window.location.href = kakaoAuthUrl;
@@ -31,7 +32,7 @@ const Login = () => {
     const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
     window.location.href = naverAuthUrl;
   };
-  //실패 시 404페이지?
+
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const authorizationCode = params.get("code");
