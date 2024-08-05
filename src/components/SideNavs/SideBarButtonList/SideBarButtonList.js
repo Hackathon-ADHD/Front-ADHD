@@ -56,7 +56,7 @@ const SideBarButtonList = ({ setResetHomeClick }) => {
         defaultIcon={<BsFileEarmarkBarGraph />}
         hoveredIcon={<BsFileEarmarkBarGraphFill />}
         isClicked={clickedIndex === 2}
-        onClick={() => handleButtonClick(2, null)}
+        onClick={() => handleButtonClick(2, () => navigate("diary-graph"))}
       >
         주차별 행복 수치
       </SideBarButton>
@@ -64,7 +64,7 @@ const SideBarButtonList = ({ setResetHomeClick }) => {
         defaultIcon={<PiChatsTeardrop />}
         hoveredIcon={<PiChatsTeardropFill />}
         isClicked={clickedIndex === 3}
-        onClick={() => handleButtonClick(3, null)}
+        onClick={() => handleButtonClick(3, () => navigate("oneyearagotoday"))}
       >
         1년전 나의 오늘
       </SideBarButton>

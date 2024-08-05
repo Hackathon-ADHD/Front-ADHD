@@ -16,9 +16,11 @@ const KakaoAuthRedirect = () => {
       axios
         .get(backendPoint)
         .then((response) => {
-          const accessToken = response.data.accessToken;
-          const refreshToken = response.data.refreshToken;
-          const email = response.data.email;
+          console.log(response.data);
+          console.log(response.data.body.data?.accessToken);
+          const accessToken = response.data.body.data?.accessToken;
+          const refreshToken = response.data.body.data?.refreshToken;
+          const email = response.data.body.data?.email;
 
           localStorage.setItem("kakaoAccessToken", accessToken);
           localStorage.setItem("kakaoRefreshToken", refreshToken);

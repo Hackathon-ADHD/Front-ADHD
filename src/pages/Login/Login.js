@@ -9,7 +9,6 @@ import {
   LoginButtonWrapper,
   SocialLoginButton,
   LoginText,
-  BackgroundImageWrapper,
 } from "./LoginStyle";
 
 import kakaoSigninButton from "../../assets/images/kakao_login_image.png";

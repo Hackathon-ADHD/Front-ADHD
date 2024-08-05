@@ -20,9 +20,9 @@ const NaverAuthRedirect = () => {
       axios
         .get(backendEndpoint)
         .then((response) => {
-          const accessToken = response.data.access_token;
-          const refreshToken = response.data.refresh_token;
-          const email = response.data.email;
+          const accessToken = response.data.body.data?.accessToken;
+          const refreshToken = response.data.body.data?.accessToken;
+          const email = response.data.body.data?.accessToken;
 
           localStorage.setItem("naverAccessToken", accessToken);
           localStorage.setItem("naverRefreshToken", refreshToken);
