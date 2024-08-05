@@ -3,7 +3,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import ProfileHeader from "../components/SideNavs/ProfileHeader/ProfileHeader";
 import SideBarButtonList from "../components/SideNavs/SideBarButtonList/SideBarButtonList";
-import { isLoggedInState } from "../recoils/atoms/loginState";
+import { isLoggedInState, loginTokenState } from "../recoils/atoms/loginState";
 import {
   LayoutWrapper,
   MainWrapper,
@@ -16,6 +16,7 @@ import {
 const Layout = () => {
   const navigate = useNavigate();
   const isLoggedIn = useRecoilValue(isLoggedInState);
+  const tokenState = useRecoilValue(loginTokenState);
   const [resetHomeClick, setResetHomeClick] = useState(null);
 
   const handleClickSignup = () => {
@@ -29,7 +30,7 @@ const Layout = () => {
         <SideBarButtonWrapper>
           <SideBarButtonList setResetHomeClick={setResetHomeClick} />
         </SideBarButtonWrapper>
-        {!isLoggedIn && (
+        {!tokenState && (
           <SignupButtonWrapper>
             <SignupButton onClick={handleClickSignup}>회원가입</SignupButton>
           </SignupButtonWrapper>

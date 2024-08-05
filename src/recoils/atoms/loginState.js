@@ -14,3 +14,7 @@ export const tokenState = atom({
     key: "tokenState", //unique ID
     default: localStorage.getItem("token") || "", //초기값을 로컬스토리지에서 가져옴
 });
+export const loginTokenState = atom({
+  key: "loginTokenState",
+  default: "",
+});
