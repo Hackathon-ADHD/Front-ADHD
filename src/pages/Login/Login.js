@@ -28,10 +28,10 @@ const Login = () => {
     window.location.href = kakaoAuthUrl;
   };
 
-  const handleNaverLogin = () => {
-    const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
-    window.location.href = naverAuthUrl;
-  };
+  // const handleNaverLogin = () => {
+  //   const naverAuthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${process.env.REACT_APP_NAVER_CLIENT_ID}&state=${STATE}&redirect_uri=${process.env.REACT_APP_NAVER_REDIRECT_URI}`;
+  //   window.location.href = naverAuthUrl;
+  // };
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -71,10 +71,7 @@ const Login = () => {
             >
               <img src={kakaoSigninButton} alt="kakao-login" />
             </SocialLoginButton>
-            <SocialLoginButton
-              className="naver_login_button"
-              onClick={handleNaverLogin}
-            >
+            <SocialLoginButton className="naver_login_button">
               <img src={naverSigninButton} alt="naver-login" />
             </SocialLoginButton>
           </LoginButtonWrapper>
