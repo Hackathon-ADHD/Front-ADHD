@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://52.78.121.130:8080/api";
+const BASE_URL = "https://soogo.ba-ro.co.kr/api";
 const token = localStorage.getItem("kakaoAccessToken");
 
 export const getAllDiaries = async () => {

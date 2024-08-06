@@ -33,7 +33,7 @@ const Layout = () => {
 
       try {
         const response = await axios.post(
-          "http://52.78.121.130:8080/api/logout",
+          "https://soogo.ba-ro.co.kr/api/logout",
           {},
           {
             headers: {
