@@ -11,7 +11,7 @@ const KakaoAuthRedirect = () => {
     const authorizationCode = params.get("code");
 
     if (authorizationCode) {
-      const backendPoint = `http://52.78.121.130:8080/login/kakao?code=${authorizationCode}`;
+      const backendPoint = `//52.78.121.130:8080/api/login/kakao?code=${authorizationCode}`;
 
       axios
         .get(backendPoint)

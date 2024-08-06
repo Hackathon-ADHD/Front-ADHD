@@ -12,7 +12,7 @@ const NaverAuthRedirect = () => {
     const state = params.get("state");
 
     if (authorizationCode && state) {
-      const backendEndpoint = `http://52.78.121.130:8080/login/naver?code=${authorizationCode}&state=${state}`;
+      const backendEndpoint = `//52.78.121.130:8080/api/login/naver?code=${authorizationCode}&state=${state}`;
 
       axios
         .get(backendEndpoint)
