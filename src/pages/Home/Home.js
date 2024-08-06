@@ -6,6 +6,7 @@ import { getDiariesByDate } from "../../utils/diaryPicker";
 import { getAllDiaries } from "../../apis/diary";
 import { formatDate } from "../../utils/formatter";
 import Review from "../Diary/DiaryReview";
+import { userProfileState } from "../../recoils/atoms/userAtom";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(formatDate(new Date()));
@@ -17,6 +18,7 @@ const Home = () => {
 
   const handleDateClick = (date) => {
     setSelectedDate(formatDate(date));
+    console.log(userProfileState.name);
   };
 
   useEffect(() => {

@@ -26,7 +26,7 @@ const Review = (props) => {
             <S.FlexBetween style={{ flexDirection: "column" }}>
               <p style={{ fontWeight: "bolder", fontSize: "1.5rem" }}>
                 {props.dateType}&nbsp;
-                {userProfile.name ? userProfile.name : "아무개"}님의 하루는
+                {userProfile ? userProfile.name : "아무개"}님의 하루는
               </p>
 
               <p>{props.diaryFeedback}</p>
