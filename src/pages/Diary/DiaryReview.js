@@ -61,7 +61,7 @@ const Review = (props) => {
 
     const renderSongRecommendations = (recommendation) => {
         if (!recommendation) return null;
-        // 가수-노래 쌍을 개행 기준으로 나누기
+        // 곡마다 개행하여 나누기
         return recommendation.split("\n").map((song, index) => <p key={index}>{song}</p>);
     };
 
