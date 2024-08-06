@@ -62,6 +62,7 @@ const OneYearAgoToday = () => {
         characterImg={diaries.emotion}
         songRecommendation={diaries.recommendSongs}
         dateType="작년"
+        showHomeButton={true}
       />
     </div>
   );
