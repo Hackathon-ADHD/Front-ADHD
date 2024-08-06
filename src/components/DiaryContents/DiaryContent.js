@@ -13,35 +13,30 @@ import { getEmotionByType } from "../../utils/emotionSelector";
  * emotion
  */
 const DiaryContent = (props) => {
-  const handleAnalysisButtonClick = () => {
-    getAnalysisByDiaryId(props.entry.id).then((response) => {
-      props.setSelectedDate(props.entry.date);
-      props.setAnalysis(response);
-      props.setIsAnalysisViewOpen(true);
-    });
-  };
+    const handleAnalysisButtonClick = () => {
+        getAnalysisByDiaryId(props.entry.id).then((response) => {
+            props.setSelectedDate(props.entry.date);
+            props.setAnalysis(response);
+            props.setIsAnalysisViewOpen(true);
+        });
+    };
 
-  return (
-    <S.DiaryContentContainer>
-      <S.DiaryHeader>
-        <S.CharacterImageWrapper>
-          <S.CharacterImage
-            src={getEmotionByType(props.entry.emotion)}
-            alt="Character"
-          />
-        </S.CharacterImageWrapper>
-        <S.DateText>{props.entry.date}</S.DateText>
-        <S.MenuIconWrapper>
-          <GoKebabHorizontal cursor={"pointer"} />
-        </S.MenuIconWrapper>
-      </S.DiaryHeader>
-      <S.ContentText>{props.entry.content}</S.ContentText>
+    return (
+        <S.DiaryContentContainer>
+            <S.DiaryHeader>
+                <S.CharacterImageWrapper>
+                    <S.CharacterImage src={getEmotionByType(props.entry.emotion)} alt="Character" />
+                </S.CharacterImageWrapper>
+                <S.DateText>{props.entry.date}</S.DateText>
+                <S.MenuIconWrapper>
+                    <GoKebabHorizontal cursor={"pointer"} />
+                </S.MenuIconWrapper>
+            </S.DiaryHeader>
+            <S.ContentText>{props.entry.content}</S.ContentText>
 
-      <S.AnalysisShowButton onClick={handleAnalysisButtonClick}>
-        일기 분석 보기
-      </S.AnalysisShowButton>
-    </S.DiaryContentContainer>
-  );
+            <S.AnalysisShowButton onClick={handleAnalysisButtonClick}>감정이의 답장보기</S.AnalysisShowButton>
+        </S.DiaryContentContainer>
+    );
 };
 
 export default DiaryContent;
