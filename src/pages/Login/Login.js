@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
-    LoginWrapper,
-    LoginLeft,
-    LoginRight,
-    LoginTextWrapper,
-    LoginLogoWrapper,
-    LoginButtonWrapper,
-    SocialLoginButton,
-    LoginText,
+  LoginWrapper,
+  LoginLeft,
+  LoginRight,
+  LoginTextWrapper,
+  LoginLogoWrapper,
+  LoginButtonWrapper,
+  SocialLoginButton,
+  LoginText,
 } from "./LoginStyle";
 
 import kakaoSigninButton from "../../assets/images/kakao_login_image.png";
@@ -16,17 +16,12 @@ import naverSigninButton from "../../assets/images/naver_login_image.png";
 import loginLogo from "../../assets/images/LoginLogoImage.png";
 import { useTypingAnime } from "../../components/TypingTextAnimation";
 import { GlobalStyle } from "../../assets/styles/globalStyle";
-import axios from "axios";
-import { useSetRecoilState } from "recoil";
-import { tokenState } from "../../recoils/atoms/authAtoms";
-import { isLoggedInState } from "../../recoils/atoms/loginState";
 
 const STATE = "test";
 
 const Login = () => {
-    const location = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
-
 
   const handleKakaoLogin = () => {
     const kakaoAuthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_KAKAO_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_KAKAO_REDIRECT_URI}&response_type=code`;
@@ -46,44 +41,52 @@ const Login = () => {
       navigate("/signup");
     }
   }, [location.search, navigate]);
-  
-    const { animeFinishFlag: firstFlag, TypingTextDiv: FirstText } = useTypingAnime("오늘 하루도", 100);
-    const { animeFinishFlag: secondFlag, TypingTextDiv: SecondText } = useTypingAnime(
-        "수고했을 당신에게",
-        100,
-        firstFlag
-    );
-    const { TypingTextDiv: ThirdText } = useTypingAnime("전하는 마음", 100, secondFlag);
 
-    return (
-        <>
-            <GlobalStyle />
-            <LoginWrapper>
-                <LoginLeft>
-                    <LoginTextWrapper>
-                        <LoginText>
-                            <FirstText />
-                            <SecondText />
-                            <ThirdText />
-                        </LoginText>
-                    </LoginTextWrapper>
-                    <LoginButtonWrapper>
-                        <SocialLoginButton className="kakao_login_button" onClick={handleKakaoLogin}>
-                            <img src={kakaoSigninButton} alt="kakao-login" />
-                        </SocialLoginButton>
-                        <SocialLoginButton className="naver_login_button" onClick={handleNaverLogin}>
-                            <img src={naverSigninButton} alt="naver-login" />
-                        </SocialLoginButton>
-                    </LoginButtonWrapper>
-                </LoginLeft>
-                <LoginRight>
-                    <LoginLogoWrapper>
-                        <img src={loginLogo} alt="login-logo" />
-                    </LoginLogoWrapper>
-                </LoginRight>
-            </LoginWrapper>
-        </>
-    );
+  const { animeFinishFlag: firstFlag, TypingTextDiv: FirstText } =
+    useTypingAnime("오늘 하루도", 100);
+  const { animeFinishFlag: secondFlag, TypingTextDiv: SecondText } =
+    useTypingAnime("수고했을 당신에게", 100, firstFlag);
+  const { TypingTextDiv: ThirdText } = useTypingAnime(
+    "전하는 마음",
+    100,
+    secondFlag
+  );
+
+  return (
+    <>
+      <GlobalStyle />
+      <LoginWrapper>
+        <LoginLeft>
+          <LoginTextWrapper>
+            <LoginText>
+              <FirstText />
+              <SecondText />
+              <ThirdText />
+            </LoginText>
+          </LoginTextWrapper>
+          <LoginButtonWrapper>
+            <SocialLoginButton
+              className="kakao_login_button"
+              onClick={handleKakaoLogin}
+            >
+              <img src={kakaoSigninButton} alt="kakao-login" />
+            </SocialLoginButton>
+            <SocialLoginButton
+              className="naver_login_button"
+              onClick={handleNaverLogin}
+            >
+              <img src={naverSigninButton} alt="naver-login" />
+            </SocialLoginButton>
+          </LoginButtonWrapper>
+        </LoginLeft>
+        <LoginRight>
+          <LoginLogoWrapper>
+            <img src={loginLogo} alt="login-logo" />
+          </LoginLogoWrapper>
+        </LoginRight>
+      </LoginWrapper>
+    </>
+  );
 };
 
 export default Login;
