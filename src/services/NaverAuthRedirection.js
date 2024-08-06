@@ -11,9 +11,6 @@ const NaverAuthRedirect = () => {
     const authorizationCode = params.get("code");
     const state = params.get("state");
 
-    console.log("Authorization Code:", authorizationCode);
-    console.log("State:", state);
-
     if (authorizationCode && state) {
       const backendEndpoint = `http://52.78.121.130:8080/login/naver?code=${authorizationCode}&state=${state}`;
 

@@ -26,7 +26,7 @@ const SideBarButtonList = ({ setResetHomeClick }) => {
   const resetClickedIndex = () => setClickedIndex(null);
 
   useEffect(() => {
-    setResetHomeClick(() => resetClickedIndex);
+    setResetHomeClick(() => resetClickedIndex());
   }, [setResetHomeClick]);
 
   return (

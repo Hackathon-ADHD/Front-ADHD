@@ -18,7 +18,6 @@ const Home = () => {
 
   const handleDateClick = (date) => {
     setSelectedDate(formatDate(date));
-    console.log(userProfileState.name);
   };
 
   useEffect(() => {
