@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { naverLogin } from "./apis/naver";
 
 const NaverAuthRedirect = () => {
   const location = useLocation();
@@ -9,29 +9,22 @@ const NaverAuthRedirect = () => {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const authorizationCode = params.get("code");
-    const state = params.get("state");
 
-    if (authorizationCode && state) {
-      const backendEndpoint = `//52.78.121.130:8080/api/login/naver?code=${authorizationCode}&state=${state}`;
-
-      axios
-        .get(backendEndpoint)
-        .then((response) => {
-          const accessToken = response.data.body.data?.accessToken;
-          const refreshToken = response.data.body.data?.accessToken;
-          const email = response.data.body.data?.accessToken;
-
+    if (authorizationCode) {
+      naverLogin(authorizationCode)
+        .then(({ accessToken, refreshToken, email, newMember }) => {
           localStorage.setItem("naverAccessToken", accessToken);
           localStorage.setItem("naverRefreshToken", refreshToken);
           localStorage.setItem("naverEmail", email);
 
-          navigate("/signup");
+          if (newMember) {
+            navigate("/signup");
+          } else {
+            navigate("/");
+          }
         })
         .catch((error) => {
-          console.error(
-            "Error:",
-            error.response ? error.response.data : error.message
-          );
+          console.error("Error:", error.message);
         });
     }
   }, [location.search, navigate]);

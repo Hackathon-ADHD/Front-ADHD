@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { kakaoLogin } from "./apis/kakao";
 
 const KakaoAuthRedirect = () => {
   const location = useLocation();
@@ -11,24 +11,13 @@ const KakaoAuthRedirect = () => {
     const authorizationCode = params.get("code");
 
     if (authorizationCode) {
-      const backendPoint = `//52.78.121.130:8080/api/login/kakao?code=${authorizationCode}`;
-
-      axios
-        .get(backendPoint)
-        .then((response) => {
-          console.log(response.data);
-          console.log(response.data.body.data?.accessToken);
-          const accessToken = response.data.body.data?.accessToken;
-          const refreshToken = response.data.body.data?.refreshToken;
-          const email = response.data.body.data?.email;
-          const newMember = response.data.body.data?.newMember;
-
-          console.log(response.data.body.data);
-
+      kakaoLogin(authorizationCode)
+        .then(({ accessToken, refreshToken, email, newMember }) => {
           localStorage.setItem("kakaoAccessToken", accessToken);
           localStorage.setItem("kakaoRefreshToken", refreshToken);
           localStorage.setItem("kakaoEmail", email);
           localStorage.setItem("newMember", newMember);
+
           if (newMember) {
             navigate("/signup");
           } else {
@@ -36,10 +25,7 @@ const KakaoAuthRedirect = () => {
           }
         })
         .catch((error) => {
-          console.error(
-            "Error:",
-            error.response ? error.response.data : error.message
-          );
+          console.error("Error:", error.message);
         });
     }
   }, [location.search, navigate]);
