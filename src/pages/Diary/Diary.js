@@ -137,7 +137,7 @@ const Diary = () => {
                 value={diaryText}
                 onChange={(e) => setDiaryText(e.target.value)}
             />
-            <AnalyzeButton onClick={handleAnalyzeClick}>분석하기</AnalyzeButton>
+            <AnalyzeButton onClick={handleAnalyzeClick}>답장받기</AnalyzeButton>
             {isModalOpen && (
                 <ModalBackground>
                     <ModalContent>
