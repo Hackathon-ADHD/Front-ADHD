@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import LogoImage from "../../../assets/images/LogoImage.png";
 import { useRecoilValue } from "recoil";
-//import { profileNameState } from "../../../recoils/atoms/loginState";
 import { userProfileState } from "../../../recoils/atoms/userAtom";
 import * as S from "./ProfileHeaderStyle";
 import { useEffect, useState } from "react";
@@ -11,7 +10,6 @@ const ProfileHeader = ({ resetHomeClick }) => {
     const userProfile = useRecoilValue(userProfileState);
     const profileName = userProfile.name; // userProfileState에서 name을 가져옴
     const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-
     useEffect(() => {
         const handleResize = () => {
             setIsMobile(window.innerWidth <= 1200);
@@ -30,7 +28,6 @@ const ProfileHeader = ({ resetHomeClick }) => {
         }
         navigate("/");
     };
-
     return (
         <S.SideBarLogoNicknameWrapper>
             <S.LogoWrapper>
