@@ -45,6 +45,7 @@ export const CharacterImageWrapper = styled.div`
     align-items: center;
     justify-content: flex-start;
     margin-left: 20px;
+    margin-bottom: 10px;
     @media (max-width: 768px) {
         margin-left: 0;
     }
