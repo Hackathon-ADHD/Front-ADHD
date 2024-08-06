@@ -10,7 +10,7 @@ import { userProfileState } from "../../recoils/atoms/userAtom";
 
 const Home = () => {
   const [selectedDate, setSelectedDate] = useState(formatDate(new Date()));
-  const [diaryEntries, setDiaryEntries] = useState(null);
+  const [diaryEntries, setDiaryEntries] = useState([]);
   const [wholeDiaryEntries, setWholeDiaryEntries] = useState([]);
 
   const [analysis, setAnalysis] = useState([]);
@@ -21,16 +21,22 @@ const Home = () => {
   };
 
   useEffect(() => {
-    if (!diaryEntries) {
-      getAllDiaries().then((res) => {
-        setDiaryEntries(res);
-        setWholeDiaryEntries(res);
-      });
-    } else {
-      getDiariesByDate(wholeDiaryEntries, selectedDate).then((res) => {
-        setDiaryEntries(res);
-      });
-    }
+    const fetchDiaries = async () => {
+      if (wholeDiaryEntries.length === 0) {
+        const allDiaries = await getAllDiaries();
+        setWholeDiaryEntries(allDiaries);
+        const diariesByDate = await getDiariesByDate(allDiaries, selectedDate);
+        setDiaryEntries(diariesByDate);
+      } else {
+        const diariesByDate = await getDiariesByDate(
+          wholeDiaryEntries,
+          selectedDate
+        );
+        setDiaryEntries(diariesByDate);
+      }
+    };
+
+    fetchDiaries();
   }, [selectedDate]);
 
   return isAnalysisViewOpen ? (
