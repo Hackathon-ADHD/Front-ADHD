@@ -17,7 +17,7 @@ const OneYearAgoToday = () => {
       try {
         const response = await axios
           .get(
-            `http://52.78.121.130:8080/api/diary/last-year?date=${formattedDate}`,
+            `https://soogo.ba-ro.co.kr/api/diary/last-year?date=${formattedDate}`,
             {
               headers: {
                 Authorization: `Bearer ${token}`,
