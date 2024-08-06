@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { naverLogin } from "./apis/naver";
+import { naverLogin } from "../apis/diary";
 
 const NaverAuthRedirect = () => {
   const location = useLocation();

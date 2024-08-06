@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { kakaoLogin } from "./apis/kakao";
+import { kakaoLogin } from "../apis/diary";
 
 const KakaoAuthRedirect = () => {
   const location = useLocation();
