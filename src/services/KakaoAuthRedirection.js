@@ -21,22 +21,25 @@ const KakaoAuthRedirect = () => {
           const accessToken = response.data.body.data?.accessToken;
           const refreshToken = response.data.body.data?.refreshToken;
           const email = response.data.body.data?.email;
+          const newMember = response.data.body.data?.newMember;
+
+          console.log(response.data.body.data);
 
           localStorage.setItem("kakaoAccessToken", accessToken);
           localStorage.setItem("kakaoRefreshToken", refreshToken);
           localStorage.setItem("kakaoEmail", email);
-
-          navigate("/signup");
+          localStorage.setItem("newMember", newMember);
+          if (newMember) {
+            navigate("/signup");
+          } else {
+            navigate("/");
+          }
         })
         .catch((error) => {
           console.error(
             "Error:",
             error.response ? error.response.data : error.message
           );
-          // if (error.response) {
-          //   console.error("Status:", error.response.status);
-          //   console.error("Headers:", error.response.headers);
-          // }
         });
     }
   }, [location.search, navigate]);
