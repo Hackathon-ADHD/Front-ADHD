@@ -40,3 +40,33 @@ export async function getAnalysisByDiaryId(id) {
     return [];
   }
 }
+
+export const kakaoLogin = async (authorizationCode) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/login/kakao?code=${authorizationCode}`,
+      {}
+    );
+
+    const { accessToken, refreshToken, email, newMember } =
+      response.data.body.data;
+    return { accessToken, refreshToken, email, newMember };
+  } catch (error) {
+    return [];
+  }
+};
+
+export const naverLogin = async (authorizationCode) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/login/naver?code=${authorizationCode}`,
+      {}
+    );
+
+    const { accessToken, refreshToken, email, newMember } =
+      response.data.body.data;
+    return { accessToken, refreshToken, email, newMember };
+  } catch (error) {
+    return [];
+  }
+};
