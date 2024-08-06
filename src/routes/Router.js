@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Notification from "../pages/Notification/Notification";
@@ -13,22 +13,24 @@ import OneYearAgoToday from "../pages/OneYearAgoToday/OneYearAgoToday";
 import DiaryGraph from "../pages/DiaryGraph/DiaryGraph";
 
 const AppRouter = () => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="diary" element={<Diary />} />
-        <Route path="review" element={<DiaryReview />} />
-        <Route path="notification" element={<Notification />} />
-        <Route path="oneyearagotoday" element={<OneYearAgoToday />} />
-        <Route path="diary-graph" element={<DiaryGraph />} />
-      </Route>
-      <Route path="/login" element={<Login />} />
-      <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
-      <Route path="/naver-login" element={<NaverAuthRedirect />} />
-      <Route path="/signup" element={<Signup />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Navigate to="/login" />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/kakao-login" element={<KakaoAuthRedirect />} />
+            <Route path="/naver-login" element={<NaverAuthRedirect />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/home" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="diary" element={<Diary />} />
+                <Route path="review" element={<DiaryReview />} />
+                <Route path="notification" element={<Notification />} />
+                <Route path="oneyearagotoday" element={<OneYearAgoToday />} />
+                <Route path="diary-graph" element={<DiaryGraph />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/login" />} />
+        </Routes>
+    );
 };
 
 export default AppRouter;
