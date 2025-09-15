@@ -1,70 +1,44 @@
-# Getting Started with Create React App
+🐯 2024.8.6 ~ 2024.8.7
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## ADHD - 수고했어, 오늘도.
 
-## Available Scripts
+### **서비스 개요**
 
-In the project directory, you can run:
+정신 건강을 위한 일기 어플로, 사용자가 매일 매일 일기를 작성하고 AI(chat gpt 파인튜닝)가 해당 일기에 대한 공감 및 위로의 답변을 제공합니다. 일기는 달력에 스탬프 형식으로 찍히며, 일주일마다 주간 요약을 해주며 한 주를 어떻게 보냈는지 정리 및 반성하게 해줍니다.
 
-### `npm start`
+# 💻 주요 기능
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 📖 **일기 기능**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **매일 일기 작성**: 사용자는 매일 자신의 감정과 경험을 기록합니다.
+- **감정 선택**: 일기를 작성할 때 사용자가 현재 감정을 선택할 수 있도록 하고, 이를 통해 감정의 변화를 추적할 수 있습니다. 
+- **AI 기반 일기 응답**: chat gpt를 파인튜닝하여 작성한 일기에 AI가 공감과 위로의 메시지를 자동으로 제공합니다.
+- **주간 요약**: 일주일 동안의 일기를 요약하여 사용자가 한 주 동안의 감정과 경험을 쉽게 볼 수 있도록 돕습니다.
+  
+![image](https://github.com/user-attachments/assets/55193468-cad4-4b77-8f06-0d468e138141)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+### ❤️ **주차별 행복 지수**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **주차별 행복 지수**: 일주일 선택하여 해당 기간에 행복지수를 차트로 시각화하여 한 눈에 볼 수 있습니다.
+  
+![image](https://github.com/user-attachments/assets/7a00e007-cd33-46d3-ab32-13810ece4f15)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### **현재 비슷한 플랫폼 유/무 (있다면 그 플랫폼과 차이점이 무엇인지)**
 
-### `npm run eject`
+**앱 : 무다**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 감정 선택 기능 (달력에 스탬프 기능)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+**앱 : 답다** 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- 일기 작성 후 ai가 답변 생성
+- ai가 생성한 나를 돌아보는 질문
+- 감정 선택 기능 (달력에 스탬프 기능)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 수익화 방향
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **구독 서비스**: 2000원의 구독료를 낸 프리미엄 사용자에게는 추가 기능(예: 감정 이모티콘 추가 제공, 플레이리스트 저장, 1년 전 오늘, 친구 일기 교환, 이달의 그림 생성, 광고제거 등)을 제공하여 수익을 창출할 수 있습니다.
+- **광고 수익**: 무료 사용자에게는 광고를 통해 수익을 창출할 수 있습니다.
